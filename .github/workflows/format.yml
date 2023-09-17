@@ -24,8 +24,8 @@ jobs:
       run: composer install
 
     - name: Run PHP-CS-Fixer
-      run: composer cs-fixer
-
+      run: vendor/bin/php-cs-fixer fix .  
+      
     - name: Commit changes
       run: |
         git config --local user.email "action@github.com"
