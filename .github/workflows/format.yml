@@ -1,0 +1,37 @@
+name: PHP-CS-Fixer
+
+on: [pull_request]  # You can adjust the trigger event as needed
+
+jobs:
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'  # Change to your desired PHP version
+
+    - name: Install Composer
+      run: |
+        curl -sS https://getcomposer.org/installer | php
+        mv composer.phar /usr/local/bin/composer
+
+    - name: Install dependencies
+      run: composer install
+
+    - name: Run PHP-CS-Fixer
+      run: composer cs-fixer
+
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Apply PHP-CS-Fixer"
+        git push origin $GITHUB_REF
+      env:
+        GITHUB_REF: ${{ github.ref }}
