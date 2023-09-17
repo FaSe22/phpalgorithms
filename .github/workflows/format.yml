@@ -35,3 +35,5 @@ jobs:
         git push origin $GITHUB_REF
       env:
         GITHUB_REF: ${{ github.ref }}
+      # Use the PAT secret here
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
