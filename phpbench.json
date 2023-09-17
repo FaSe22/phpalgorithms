@@ -1,0 +1,20 @@
+{   
+  "$schema":"./vendor/phpbench/phpbench/phpbench.schema.json",
+  "runner.bootstrap": "vendor/autoload.php",
+  "runner.path": "tests/Benchmark",
+    "report.generators": {
+        "sort_duration": {
+            "extends": "default",
+            "title": "Sorting Speed",
+            "description": "Benchmark Bubblesort::sort",
+            "cols": [ "subject", "mode" ]
+        }
+    },
+  "report.outputs": {
+         "build-artifact": {
+             "renderer": "html",
+             "path": ".phpbench/html/index.html",
+             "title": "PhpBench Report" 
+         }
+    }
+}

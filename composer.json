@@ -1,0 +1,21 @@
+{
+    "name": "fase/algorithms",
+    "description": "sort algorithms in php",
+    "require-dev": {
+        "phpbench/phpbench": "^1.2",
+        "phpunit/phpunit": "^10.3",
+        "phpstan/phpstan": "^1.10",
+        "friendsofphp/php-cs-fixer": "^3.27"
+    },
+    "autoload": {
+        "psr-4": {
+        "Src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sebastian",
+            "email": "fase22290@icloud.com"
+        }
+    ]
+}
