@@ -1,0 +1,47 @@
+name: PHP CI with PHPUnit Coverage
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+
+    - name: Install Composer
+      run: |
+        curl -sS https://getcomposer.org/installer | php
+        mv composer.phar /usr/local/bin/composer
+
+    - name: Install dependencies
+      run: composer install
+
+    - name: Run PHPUnit tests with code coverage
+      run: |
+        phpunit --coverage-clover=coverage.xml
+        composer require --dev php-coveralls/php-coveralls
+        php vendor/bin/php-coveralls -v
+      env:
+        COVERALLS_RUN_LOCALLY: '1'
+
+    - name: Generate HTML code coverage report
+      run: |
+        composer require --dev vimeo/psalm
+        php vendor/bin/psalm --shepherd
+        php vendor/bin/psalm --show-info=true --report=report.html --report-summary=report.txt
+      env:
+        COVERALLS_RUN_LOCALLY: '1'
+
+    - name: Archive HTML coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage-report
+        path: report.html
