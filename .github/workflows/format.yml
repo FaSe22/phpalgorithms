@@ -1,6 +1,6 @@
 name: PHP-CS-Fixer
 
-on: [pull_request]  # You can adjust the trigger event as needed
+on: [push]  # You can adjust the trigger event as needed
 
 jobs:
   php-cs-fixer:
