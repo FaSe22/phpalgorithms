@@ -8,7 +8,7 @@ class BubblesortBench{
 
   /**
   * @Revs(1000)
-  * @Iterations(5)
+  * @Iterations(20)
   */
   public function benchBubblesort()
   {
