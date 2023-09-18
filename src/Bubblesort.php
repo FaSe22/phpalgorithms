@@ -4,11 +4,10 @@ namespace Src;
 
 class Bubblesort
 {
-    
     /**
     * @param array $arr
     * @return array
-    */  
+    */
     public static function sort(array $arr): array
     {
         for ($j = count($arr) - 1; $j > 0; $j--) {
@@ -18,6 +17,7 @@ class Bubblesort
                 }
             }
         }
-      return $arr;
+
+        return $arr;
     }
 }
