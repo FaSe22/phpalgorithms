@@ -1,39 +1,23 @@
-name: PHP-CS-Fixer
+name: Check & fix styling
 
-on: [push]  # You can adjust the trigger event as needed
+on: [push]
 
 jobs:
   php-cs-fixer:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
 
-    - name: Set up PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.2' 
+      - name: Run PHP CS Fixer
+        uses: docker://oskarstark/php-cs-fixer-ga
+        with:
+          args: --config=.php_cs.dist.php --allow-risky=yes
 
-    - name: Install Composer
-      run: |
-        curl -sS https://getcomposer.org/installer | php
-        mv composer.phar /usr/local/bin/composer
-
-    - name: Install dependencies
-      run: composer install
-
-    - name: Run PHP-CS-Fixer
-      run: vendor/bin/php-cs-fixer fix .  
-      
-    - name: Commit changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add .
-        git commit -m "Apply PHP-CS-Fixer"
-        git push origin $GITHUB_REF
-      env:
-        GITHUB_REF: ${{ github.ref }}
-      # Use the PAT secret here
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Fix styling
