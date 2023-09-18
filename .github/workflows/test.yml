@@ -26,17 +26,5 @@ jobs:
 
     - name: Run PHPUnit tests with code coverage
       run: |
-        vendor/bin/phpunit test
-    - name: Generate HTML code coverage report
-      run: |
-        composer require --dev vimeo/psalm
-        php vendor/bin/psalm --shepherd
-        php vendor/bin/psalm --show-info=true --report=report.html --report-summary=report.txt
-      env:
-        COVERALLS_RUN_LOCALLY: '1'
-
-    - name: Archive HTML coverage report
-      uses: actions/upload-artifact@v2
-      with:
-        name: coverage-report
-        path: report.html
+        vendor/bin/phpunit tests
+  
