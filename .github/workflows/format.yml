@@ -1,6 +1,9 @@
-name: Check & fix styling
+name: PHP CS Fixer and Commit
 
-on: [push]
+on:
+  push:
+    branches:
+      - main  # Adjust this to your main branch
 
 jobs:
   php-cs-fixer:
@@ -8,32 +11,23 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
+        uses: actions/checkout@v2
 
-
-      - name: Install
-        run: composer install
+      - name: Install PHP CS Fixer
+        run: |
+          composer global require friendsofphp/php-cs-fixer
+          echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
 
       - name: Run PHP CS Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
-        with:
-          args: --config=.php_cs.dist.php --allow-risky=yes
-
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Fix styling
+        run: |
+          php-cs-fixer fix --config=.php_cs.dist.php --allow-risky=yes
 
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m "Apply PHP-CS-Fixer"
+          git diff --staged --quiet || git commit -m "Apply PHP-CS-Fixer"
           git push origin $GITHUB_REF
-        env:
-          GITHUB_REF: ${{ github.ref }}
-        # Use the PAT secret here
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+
+
