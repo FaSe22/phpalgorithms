@@ -26,7 +26,7 @@ jobs:
 
     - name: Run PHPUnit tests with code coverage
       run: |
-        vendor/bin/phpunit test
+        vendor/bin/phpunit tests
     - name: Generate HTML code coverage report
       run: |
         composer require --dev vimeo/psalm
