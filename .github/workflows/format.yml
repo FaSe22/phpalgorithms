@@ -25,3 +25,15 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Fix styling
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Apply PHP-CS-Fixer"
+          git push origin $GITHUB_REF
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        # Use the PAT secret here
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
