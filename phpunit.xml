@@ -4,7 +4,6 @@
          bootstrap="vendor/autoload.php"
          cacheDirectory=".phpunit.cache"
          executionOrder="depends,defects"
-         requireCoverageMetadata="true"
          beStrictAboutCoverageMetadata="true"
          beStrictAboutOutputDuringTests="true"
          failOnRisky="true"
@@ -20,9 +19,9 @@
             <directory>src</directory>
         </include>
       </source>
-       <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
+       <!-- <filter> -->
+        <!-- <whitelist processUncoveredFilesFromWhitelist="true"> -->
+            <!-- <directory suffix=".php">src/</directory> -->
+        <!-- </whitelist> -->
+    <!-- </filter> -->
 </phpunit>

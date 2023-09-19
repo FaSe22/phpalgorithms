@@ -4,6 +4,10 @@ namespace Src;
 
 class Bubblesort
 {
+    /**
+    * @param array $arr
+    * @return array
+    */
     public static function sort(array $arr): array
     {
         /**
@@ -18,6 +22,7 @@ class Bubblesort
                 }
             }
         }
+
         return $arr;
     }
 }

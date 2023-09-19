@@ -1,0 +1,33 @@
+name: PHP CS Fixer and Commit
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to your main branch
+
+jobs:
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install PHP CS Fixer
+        run: |
+          composer global require friendsofphp/php-cs-fixer
+          echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
+
+      - name: Run PHP CS Fixer
+        run: |
+          php-cs-fixer fix --config=.php_cs.dist.php --allow-risky=yes
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git diff --staged --quiet || git commit -m "Apply PHP-CS-Fixer"
+          git push origin $GITHUB_REF
+
+

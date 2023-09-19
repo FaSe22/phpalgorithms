@@ -1,4 +1,4 @@
-name: PHP CI with PHPUnit Coverage
+name: PHP CI with phpbench
 
 on: [push]
 
@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: composer install
 
-    - name: Run PHPUnit tests with code coverage
+    - name: Run phpbench tests
       run: |
-        vendor/bin/phpunit tests
+        vendor/bin/phpbench run --report=chart
   
