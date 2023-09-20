@@ -10,7 +10,11 @@ class BinaryTree
     */
     public static function sort(array $arr): array
     {
-        return $arr;
+        $tree = new Tree($arr[0]);
+        for ($i=1; $i<count($arr); $i++) {
+            $tree->put($arr[$i]);
+        }
+        return $tree->root()->flatten();
     }
 }
 
