@@ -60,7 +60,7 @@ class Node
         $this->right = null;
     }
 
-    public function parent(): Node
+    public function parent(): Node|null
     {
         return $this->parent;
     }
@@ -70,12 +70,12 @@ class Node
         return $this->value;
     }
 
-    public function left(): Node
+    public function left(): Node|null
     {
         return $this->left;
     }
 
-    public function right(): Node
+    public function right(): Node|null
     {
         return $this->right;
     }
