@@ -14,6 +14,33 @@ class BinaryTree
     }
 }
 
+class Tree
+{
+    private Node|null $root = null;
+
+    public function __construct($value)
+    {
+        $this->root = new Node($value);
+    }
+
+    public function root(): Node
+    {
+        return $this->root;
+    }
+
+    public function put($value, Node $node=null): void
+    {
+        if ($node == null) {
+            $this->put($value, $this->root);
+        }
+        if ($node->value() > $value) {
+            $this->put($value, $node->right());
+        } else {
+            $this->put($value, $node->left());
+        }
+    }
+}
+
 class Node
 {
     private Node|null $parent;
