@@ -60,4 +60,17 @@ class Node
         $newNode = new Node($value, $this);
         return $this->right = $newNode;
     }
+
+    public function flatten(): array
+    {
+        $left = [];
+        $right = [];
+        if ($this->left() != null) {
+            $left = $this->left()->flatten();
+        }
+        if ($this->right != null) {
+            $right =  $this->right()->flatten();
+        }
+        return array_merge($left, [$this->value], $right);
+    }
 }
