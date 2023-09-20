@@ -41,14 +41,12 @@ class Tree
         if ($node->value() < $value) {
             if ($node->right() == null) {
                 $node->setRight($value);
-                return;
             } else {
                 $this->put($value, $node->right());
             }
         } else {
             if ($node->left() == null) {
                 $node->setLeft($value);
-                return;
             } else {
                 $this->put($value, $node->left());
             }
