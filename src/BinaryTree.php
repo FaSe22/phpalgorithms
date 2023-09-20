@@ -36,6 +36,7 @@ class Tree
     {
         if ($node == null) {
             $this->put($value, $this->root);
+            return;
         }
         if ($node->value() < $value) {
             if ($node->right() == null) {
