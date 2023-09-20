@@ -29,5 +29,20 @@ class Bubblesort
         return $arr;
     }
 
-
+    /**
+     * @param $arr
+     * @return array
+     */
+    private static function variant2($arr): array {
+        for ($i = 0; $i < count($arr); $i++) {
+            for ($j=0; $j < count($arr); $j++) {
+                if ($arr[$i] > $arr[$j]) {
+                    $tmp = $arr[$i];
+                    $arr[$i] = $arr[$j];
+                    $arr[$j] = $tmp;
+                }
+            }
+        }
+        return $arr;
+    }
 }
