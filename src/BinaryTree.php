@@ -50,7 +50,7 @@ class Node
     private Node|null $parent;
     private Node|null $right;
     private Node|null $left;
-    private $value;
+    private Int $value;
 
     public function __construct($value, Node $node = null)
     {
@@ -65,7 +65,7 @@ class Node
         return $this->parent;
     }
 
-    public function value()
+    public function value(): Int
     {
         return $this->value;
     }
