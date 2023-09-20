@@ -19,10 +19,12 @@ class Node
     private Node|null $parent;
     private Node|null $right;
     private Node|null $left;
+    private $value;
 
-    public function __construct(Node $node = null)
+    public function __construct($value, Node $node = null)
     {
         $this->parent = $node;
+        $this->value = $value;
         $this->left = null;
         $this->right = null;
     }
@@ -30,6 +32,11 @@ class Node
     public function parent(): Node
     {
         return $this->parent;
+    }
+
+    public function value()
+    {
+        return $this->value;
     }
 
     public function left(): Node
@@ -42,15 +49,15 @@ class Node
         return $this->right;
     }
 
-    public function setLeft(): Node
+    public function setLeft($value): Node
     {
-        $newNode = new Node($this);
+        $newNode = new Node($value, $this);
         return $this->left = $newNode;
     }
 
-    public function setRight(): Node
+    public function setRight($value): Node
     {
-        $newNode = new Node($this);
+        $newNode = new Node($value, $this);
         return $this->right = $newNode;
     }
 }
