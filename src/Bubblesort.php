@@ -5,10 +5,11 @@ namespace Src;
 class Bubblesort
 {
     /**
-    * @param array $arr
-    * @return array
-    */
-    public static function sort(array $arr): array
+     * @param array $arr
+     * @param String $method name of the methode to use for sorting
+     * @return array
+     */
+    public static function sort(array $arr, String $method="variant1"): array
     {
         return self::$method($arr);
     }
