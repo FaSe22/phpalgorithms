@@ -10,11 +10,14 @@ class Bubblesort
     */
     public static function sort(array $arr): array
     {
-        /**
- *
- * @var int[] $arr
- */
-        $arr = $arr;
+        return self::$method($arr);
+    }
+
+    /**
+     * @param $arr
+     * @return array
+     */
+    private static function variant1($arr): array {
         for ($j = count($arr) - 1; $j > 0; $j--) {
             for($i = 0; $i < $j; $i++) {
                 if($arr[$i] > $arr[$i + 1]) {
@@ -22,7 +25,8 @@ class Bubblesort
                 }
             }
         }
-
         return $arr;
     }
+
+
 }
