@@ -81,4 +81,21 @@ class Bubblesort
         } while ($check);
         return $arr;
     }
+
+    /**
+     * @param $arr
+     * @return array
+     */
+    private static function variant5($arr): array {
+        do {
+            $check = false;
+            for ($i=0; $i < count($arr)-1; $i++) {
+                if ($arr[$i] > $arr[$i+1]) {
+                    [$arr[$i],  $arr[$i+1]] = [$arr[$i+1], $arr[$i]];
+                    $check = true;
+                }
+            }
+        } while ($check);
+        return $arr;
+    }
 }
