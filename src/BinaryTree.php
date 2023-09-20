@@ -37,10 +37,20 @@ class Tree
         if ($node == null) {
             $this->put($value, $this->root);
         }
-        if ($node->value() > $value) {
-            $this->put($value, $node->right());
+        if ($node->value() < $value) {
+            if ($node->right() == null) {
+                $node->setRight($value);
+                return;
+            } else {
+                $this->put($value, $node->right());
+            }
         } else {
-            $this->put($value, $node->left());
+            if ($node->left() == null) {
+                $node->setLeft($value);
+                return;
+            } else {
+                $this->put($value, $node->left());
+            }
         }
     }
 }
