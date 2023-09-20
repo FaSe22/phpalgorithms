@@ -36,7 +36,7 @@ class Bubblesort
     private static function variant2($arr): array {
         for ($i = 0; $i < count($arr); $i++) {
             for ($j=0; $j < count($arr); $j++) {
-                if ($arr[$i] > $arr[$j]) {
+                if ($arr[$i] < $arr[$j]) {
                     $tmp = $arr[$i];
                     $arr[$i] = $arr[$j];
                     $arr[$j] = $tmp;
