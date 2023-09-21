@@ -32,7 +32,7 @@ jobs:
     - name: Publish Chart Report to GitHub Docs
       run: |
         mkdir -p $GITHUB_WORKSPACE/docs
-        cp -r $GITHUB_WORKSPACE/.phpbench/reports/* $GITHUB_WORKSPACE/docs
+        cp -r $GITHUB_WORKSPACE/.phpbench/reports/* $GITHUB_WORKSPACE/docs/reports
         cp -r $GITHUB_WORKSPACE/visualisations/* $GITHUB_WORKSPACE/docs
 
     - name: Deploy to GitHub Pages
