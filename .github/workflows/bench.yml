@@ -28,11 +28,11 @@ jobs:
       run: |
         vendor/bin/phpbench run --report=chart --retry-threshold=5 --output=build-artifact
 
-    - name: Publish HTML Report
+
+    - name: Publish Chart Report to GitHub Docs
       run: |
         mkdir -p $GITHUB_WORKSPACE/docs
         cp -r $GITHUB_WORKSPACE/.phpbench/html $GITHUB_WORKSPACE/docs
-      # Optional: You can customize the report directory structure to match your needs
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
