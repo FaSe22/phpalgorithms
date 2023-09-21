@@ -27,4 +27,15 @@ jobs:
     - name: Run phpbench tests
       run: |
         vendor/bin/phpbench run --report=chart
-  
+
+    - name: Publish HTML Report
+      run: |
+        mkdir -p $GITHUB_WORKSPACE/docs
+        cp -r $GITHUB_WORKSPACE/report $GITHUB_WORKSPACE/docs
+      # Optional: You can customize the report directory structure to match your needs
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
