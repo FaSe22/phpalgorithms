@@ -26,7 +26,7 @@
   "report.outputs": {
          "build-artifact": {
              "renderer": "html",
-             "path": ".phpbench/html/index.html",
+             "path": ".phpbench/reports/index.html",
              "title": "PhpBench Report" 
          }
     }
