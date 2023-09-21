@@ -33,7 +33,7 @@ jobs:
       run: |
         mkdir -p $GITHUB_WORKSPACE/docs
         cp -r $GITHUB_WORKSPACE/.phpbench/html/index.html $GITHUB_WORKSPACE/docs
-        cp -r $GITHUB_WORKSPACE visualisations/* $GITHUB_WORKSPACE/docs
+        cp -r $GITHUB_WORKSPACE/visualisations/* $GITHUB_WORKSPACE/docs
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
