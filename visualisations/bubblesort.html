@@ -60,8 +60,12 @@
             [originalArray[i], originalArray[j]] = [originalArray[j], originalArray[i]];
         }
 
-        bubbleSortVisualization(originalArray.slice());
-    </script>
+        (async function() {
+            while (true) {
+                await bubbleSortVisualization(originalArray.slice());
+            }
+        })();
+          </script>
 </body>
 </html>
 

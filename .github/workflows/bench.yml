@@ -32,11 +32,12 @@ jobs:
     - name: Publish Chart Report to GitHub Docs
       run: |
         mkdir -p $GITHUB_WORKSPACE/docs
-        cp -r $GITHUB_WORKSPACE/.phpbench/reports/* $GITHUB_WORKSPACE/docs/reports
+        mkdir -p $GITHUB_WORKSPACE/docs/reports
+        cp -r $GITHUB_WORKSPACE/.phpbench/reports/index.html $GITHUB_WORKSPACE/docs/reports
         cp -r $GITHUB_WORKSPACE/visualisations/* $GITHUB_WORKSPACE/docs
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs
+        publish_dir: ./docs/*
