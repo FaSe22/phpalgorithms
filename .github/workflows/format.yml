@@ -20,7 +20,7 @@ jobs:
 
       - name: Run PHP CS Fixer
         run: |
-          php-cs-fixer fix --config=.php_cs.dist.php --rules=@PSR12 --allow-risky=yes
+          php-cs-fixer fix --config=.php_cs.dist.php --allow-risky=yes
 
       - name: Commit changes
         run: |
