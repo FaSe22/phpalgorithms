@@ -1,0 +1,33 @@
+{   
+  "$schema":"./vendor/phpbench/phpbench/phpbench.schema.json",
+  "runner.bootstrap": "vendor/autoload.php",
+  "runner.path": "tests/Benchmark",
+    "report.generators": {
+        "sort_duration": {
+            "extends": "default",
+            "title": "Sorting Speed",
+            "description": "Benchmark Bubblesort::sort",
+            "cols": [ "subject", "mode" ]
+        },
+        "chart": {
+            "generator": "component",
+            "components": [
+                {
+                    "component": "bar_chart_aggregate",
+                    "title": "Example Bar Chart",
+                    "x_partition": ["iteration_index"],
+                    "bar_partition": ["suite_tag"],
+                    "y_expr": "mode(partition['result_time_avg'])",
+                    "y_axes_label": "yValue as time precision 1"
+                }
+            ]
+        }
+    },
+  "report.outputs": {
+         "build-artifact": {
+             "renderer": "html",
+             "path": ".phpbench/html/index.html",
+             "title": "PhpBench Report" 
+         }
+    }
+}
