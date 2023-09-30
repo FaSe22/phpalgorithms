@@ -9,7 +9,7 @@ class Bubblesort
      * @param String $method name of the methode to use for sorting
      * @return array
      */
-    public static function sort(array $arr, String $method="variant1"): array
+    public static function sort(array $arr, String $method = "variant1"): array
     {
 
         return self::$method($arr);
@@ -19,7 +19,8 @@ class Bubblesort
      * @param $arr
      * @return array
      */
-    private static function variant1($arr): array {
+    private static function variant1($arr): array
+    {
         /**
          *
          * @var int[] $arr
@@ -31,6 +32,7 @@ class Bubblesort
                 }
             }
         }
+
         return $arr;
     }
 
@@ -38,9 +40,10 @@ class Bubblesort
      * @param $arr
      * @return array
      */
-    private static function variant2($arr): array {
+    private static function variant2($arr): array
+    {
         for ($i = 0; $i < count($arr); $i++) {
-            for ($j=0; $j < count($arr); $j++) {
+            for ($j = 0; $j < count($arr); $j++) {
                 if ($arr[$i] < $arr[$j]) {
                     $tmp = $arr[$i];
                     $arr[$i] = $arr[$j];
@@ -48,6 +51,7 @@ class Bubblesort
                 }
             }
         }
+
         return $arr;
     }
 
@@ -55,9 +59,10 @@ class Bubblesort
      * @param $arr
      * @return array
      */
-    private static function variant3($arr): array {
+    private static function variant3($arr): array
+    {
         for ($i = 0; $i < count($arr); $i++) {
-            for ($j=$i; $j < count($arr); $j++) {
+            for ($j = $i; $j < count($arr); $j++) {
                 if ($arr[$i] > $arr[$j]) {
                     $tmp = $arr[$i];
                     $arr[$i] = $arr[$j];
@@ -65,6 +70,7 @@ class Bubblesort
                 }
             }
         }
+
         return $arr;
     }
 
@@ -72,18 +78,20 @@ class Bubblesort
      * @param $arr
      * @return array
      */
-    private static function variant4($arr): array {
+    private static function variant4($arr): array
+    {
         do {
             $check = false;
-            for ($i=0; $i < count($arr)-1; $i++) {
-                if ($arr[$i] > $arr[$i+1]) {
+            for ($i = 0; $i < count($arr) - 1; $i++) {
+                if ($arr[$i] > $arr[$i + 1]) {
                     $tmp = $arr[$i];
-                    $arr[$i] = $arr[$i+1];
-                    $arr[$i+1] = $tmp;
+                    $arr[$i] = $arr[$i + 1];
+                    $arr[$i + 1] = $tmp;
                     $check = true;
                 }
             }
         } while ($check);
+
         return $arr;
     }
 
@@ -91,16 +99,18 @@ class Bubblesort
      * @param $arr
      * @return array
      */
-    private static function variant5($arr): array {
+    private static function variant5($arr): array
+    {
         do {
             $check = false;
-            for ($i=0; $i < count($arr)-1; $i++) {
-                if ($arr[$i] > $arr[$i+1]) {
-                    [$arr[$i],  $arr[$i+1]] = [$arr[$i+1], $arr[$i]];
+            for ($i = 0; $i < count($arr) - 1; $i++) {
+                if ($arr[$i] > $arr[$i + 1]) {
+                    [$arr[$i],  $arr[$i + 1]] = [$arr[$i + 1], $arr[$i]];
                     $check = true;
                 }
             }
         } while ($check);
+
         return $arr;
     }
 }

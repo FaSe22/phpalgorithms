@@ -13,7 +13,7 @@ final class BubblesortTest extends TestCase
     #[DataProvider('arrayProvider')]
     public function it_should_return_the_sorted_array($arr)
     {
-        $this->assertEquals([1,2,3,4,5,6,7,8,9], Bubblesort::sort($arr ));
+        $this->assertEquals([1,2,3,4,5,6,7,8,9], Bubblesort::sort($arr));
     }
 
     #[Test]
@@ -22,6 +22,7 @@ final class BubblesortTest extends TestCase
     {
         $this->assertEquals([1,2,3,4,5,6,7,8,9], Bubblesort::sort([9,5,6,8,3,2,1,4,7], $variant));
     }
+
     /*
     * @return array
     */
@@ -36,21 +37,20 @@ final class BubblesortTest extends TestCase
         [[1,9,2,8,3,7,4,6,5]],
         [[6,4,1,8,3,9,2,5,7]],
     ];
-  }
+    }
 
-  
     /*
     * @return array
     */
     public static function variantProvider(): array
     {
-    return [
-      ['variant1'],
-      ['variant2'],
-      ['variant3'],
-      ['variant4'],
-      ['variant5'],
-    ];
+        return [
+          ['variant1'],
+          ['variant2'],
+          ['variant3'],
+          ['variant4'],
+          ['variant5'],
+        ];
     }
 
     #[Test]
