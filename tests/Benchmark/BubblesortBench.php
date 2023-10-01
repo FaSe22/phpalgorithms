@@ -9,7 +9,8 @@ class BubblesortBench
 {
     #[Bench\Revs(5)]
     #[Bench\Iterations(5)]
-    #[Bench\ParamProviders(['provideArray', 'provideVariant'])]
+  #[Bench\ParamProviders(['provideArray', 'provideVariant'])]
+  #[Bench\Timeout(10.0)]
     public function benchBubblesort(array $params)
     {
         Bubblesort::sort($params['arr'], $params['var']);
