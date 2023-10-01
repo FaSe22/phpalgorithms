@@ -10,7 +10,7 @@ class InsertionsortBench
     #[Bench\Revs(5)]
     #[Bench\Iterations(5)]
     #[Bench\ParamProviders(['provideArray'])]
-  #[Bench\Timeout(10.0)]
+    #[Bench\Timeout(10.0)]
     public function benchInsertionsort(array $params)
     {
         Insertionsort::sort($params['arr']);
