@@ -5,7 +5,9 @@
         "phpbench/phpbench": "^1.2",
         "phpunit/phpunit": "^10.3",
         "phpstan/phpstan": "^1.10",
-        "friendsofphp/php-cs-fixer": "^3.27"
+        "friendsofphp/php-cs-fixer": "^3.27",
+        "php-coveralls/php-coveralls": "^0.1.0",
+        "vimeo/psalm": "^5.15"
     },
     "autoload": {
         "psr-4": {

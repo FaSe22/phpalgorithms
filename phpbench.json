@@ -14,7 +14,7 @@
             "components": [
                 {
                     "component": "bar_chart_aggregate",
-                    "title": "Example Bar Chart",
+                    "title": "Bubblesort Bench",
                     "x_partition": ["iteration_index"],
                     "bar_partition": ["suite_tag"],
                     "y_expr": "mode(partition['result_time_avg'])",
@@ -26,7 +26,7 @@
   "report.outputs": {
          "build-artifact": {
              "renderer": "html",
-             "path": ".phpbench/html/index.html",
+             "path": ".phpbench/reports/index.html",
              "title": "PhpBench Report" 
          }
     }
