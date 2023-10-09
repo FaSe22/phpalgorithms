@@ -4,7 +4,6 @@ namespace Src;
 
 class Bubblesort
 {
-
     /**
      * @param array $arr
      * @param String $method name of the methode to use for sorting
