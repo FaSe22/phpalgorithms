@@ -20,7 +20,7 @@ class Bubblesort
      * @param $arr
      * @return array
      */
-    private static function variant1(array $arr): array
+    private static function variant1($arr): array
     {
         /**
          *
