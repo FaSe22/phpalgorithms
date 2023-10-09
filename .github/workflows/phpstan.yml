@@ -20,7 +20,7 @@ jobs:
           coverage: none
 
       - name: Install composer dependencies
-        uses: ramsey/composer-install@v1
+        uses: composer install
 
       - name: Run PHPStan
         run: ./vendor/bin/phpstan analyze --no-progress --error-format=json > .phpstan/report.json
@@ -30,7 +30,3 @@ jobs:
         with:
           name: phpstan-report
           path: .phpstan/report.json
-
-      - name: Debug
-        run: ls -l
-
