@@ -8,7 +8,6 @@ use Src\Bubblesort;
 
 class BubblesortBench
 {
-
     #[Bench\Revs(5)]
     #[Bench\Iterations(5)]
     #[Bench\ParamProviders(['provideArray', 'provideVariant'])]
