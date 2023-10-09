@@ -4,6 +4,7 @@ namespace Src;
 
 class Bubblesort
 {
+
     /**
      * @param array $arr
      * @param String $method name of the methode to use for sorting
@@ -19,7 +20,7 @@ class Bubblesort
      * @param $arr
      * @return array
      */
-    private static function variant1($arr): array
+    private static function variant1(array $arr): array
     {
         /**
          *
