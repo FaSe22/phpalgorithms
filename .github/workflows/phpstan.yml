@@ -23,7 +23,7 @@ jobs:
         uses: ramsey/composer-install@v1
 
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyze -l 9 --no-progress --error-format=json > .phpstan/report.json
+        run: ./vendor/bin/phpstan analyze -l 9 src tests --no-progress --error-format=json > .phpstan/report.json
 
       - name: Upload PHPStan results as an artifact
         uses: actions/upload-artifact@v2
