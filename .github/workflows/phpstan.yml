@@ -22,7 +22,7 @@ jobs:
         run: composer install --no-scripts --no-progress
 
       - name: Run PHPStan
-        run: phpstan analyze --no-progress --error-format=json > .phpstan/report.json
+        run: vendor/bin/phpstan analyze --no-progress --error-format=json > .phpstan/report.json
 
       - name: Upload PHPStan report to GitHub
         uses: actions/upload-artifact@v2
