@@ -23,7 +23,7 @@ jobs:
         uses: ramsey/composer-install@v1
 
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyze --error-format=json > .phpstan/report.json
+        run: ./vendor/bin/phpstan analyze --no-progress --error-format=json > .phpstan/report.json
 
       - name: Upload PHPStan results as an artifact
         uses: actions/upload-artifact@v2
@@ -31,26 +31,3 @@ jobs:
           name: phpstan-report
           path: .phpstan/report.json
 
-  sonarcloud:
-    name: SonarCloud Analysis
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up SonarCloud
-        uses: sonarsource/sonarcloud-github-action@v1
-        with:
-          sonar-token: ${{ secrets.SONAR_TOKEN }}
-          project-key: <Your SonarCloud Project Key>
-          organization: <Your SonarCloud Organization>
-
-      - name: Download PHPStan results
-        uses: actions/download-artifact@v2
-        with:
-          name: phpstan-report
-          path: .phpstan
-
-      - name: Analyze project and upload results to SonarCloud
-        run: sonar-scanner
