@@ -37,7 +37,7 @@ jobs:
         - uses: actions/checkout@v3
         - uses: php-actions/composer@v6
         - name: PHPStan
-          run: vendor/bin/phpstan analyze
+          run: vendor/bin/phpstan analyze --error-format=json > .phpstan/report.json
         - name: Upload PHPStan report to GitHub
           uses: actions/upload-artifact@v2
           with:
