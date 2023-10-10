@@ -29,9 +29,13 @@ jobs:
           
         - name: Fix code coverage paths
           run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.xml
-
-        - name: Run PHPStan
-          run: ./vendor/bin/phpstan analyze  --no-progress --error-format=json > .phpstan/report.json
+          
+  phpstan:
+      name: Phpstan
+      runs-on: ubuntu-latest
+      steps:
+        - name: PHPStan
+          uses: php-actions/phpstan@v3
 
         - name: Upload PHPStan report to GitHub
           uses: actions/upload-artifact@v2
