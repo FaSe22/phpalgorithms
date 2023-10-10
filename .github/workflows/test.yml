@@ -7,8 +7,6 @@ on:
 jobs:
   tests:
       name: Tests
-      needs: phpstan
- 
       runs-on: ubuntu-latest
       
       steps:
@@ -31,6 +29,16 @@ jobs:
           
         - name: Fix code coverage paths
           run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.xml
+
+        - name: Run PHPStan
+          run: vendor/bin/phpstan analyze --no-progress --error-format=json > .phpstan/report.json
+
+        - name: Upload PHPStan report to GitHub
+          uses: actions/upload-artifact@v2
+          with:
+            name: phpstan-report
+            path: .phpstan/report.json
+
           
         - name: SonarCloud Scan
           uses: SonarSource/sonarcloud-github-action@master
