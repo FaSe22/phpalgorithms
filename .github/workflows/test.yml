@@ -36,7 +36,8 @@ jobs:
       steps:
         - name: PHPStan
           uses: php-actions/phpstan@v3
-
+          with:
+            path: src/, tests/
         - name: Upload PHPStan report to GitHub
           uses: actions/upload-artifact@v2
           with:
