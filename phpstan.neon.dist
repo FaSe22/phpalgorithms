@@ -6,4 +6,5 @@ parameters:
     paths:
         - src
         - tests
+    errorFormat: json
     tmpDir: build/phpstan
