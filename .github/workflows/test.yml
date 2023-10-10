@@ -33,7 +33,7 @@ jobs:
   phpstan:
       name: Phpstan
       runs-on: ubuntu-latest
-      permissions: write
+      permissions: write-all
       steps:
         - uses: actions/checkout@v3
         - uses: php-actions/composer@v6
