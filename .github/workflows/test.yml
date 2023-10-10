@@ -31,12 +31,12 @@ jobs:
           run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.xml
 
         - name: Run PHPStan
-          run: vendor/bin/phpstan analyze --no-progress --error-format=json > .phpstan/report.json
+          run: ./vendor/bin/phpstan analyze  --no-progress --error-format=json > .phpstan/report.json
 
         - name: Upload PHPStan report to GitHub
           uses: actions/upload-artifact@v2
           with:
-            name: phpstan-report
+            name: report
             path: .phpstan/report.json
 
           
