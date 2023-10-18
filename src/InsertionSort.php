@@ -57,10 +57,12 @@ class InsertionSort
                     $index = $j;
                 }
             }
-            // We now know the smallest number is at $index and can replace it with the starting position
-            $safe = $arr[$index];
-            $arr[$index] = $arr[$i];
-            $arr[$i] = $safe;
+            if ($index!=$i) {
+                // We now know the smallest number is at $index and can replace it with the starting position
+                $safe = $arr[$index];
+                $arr[$index] = $arr[$i];
+                $arr[$i] = $safe;
+            }
         }
         return $arr;
     }
