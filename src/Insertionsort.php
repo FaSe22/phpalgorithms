@@ -8,7 +8,12 @@ class Insertionsort
     * @param array $arr
     * @return array
     */
-    public static function sort(array $arr): array
+    public static function sort(array $arr, String $method = "variant1"): array
+    {
+        return self::$method($arr);
+    }
+
+    private static function variant1(array $arr): array
     {
         // iterate over all elements
         for ($i = 1; $i < count($arr); $i++) {
@@ -26,7 +31,6 @@ class Insertionsort
             }
             $arr[$i] = $element;
         }
-
         return $arr;
     }
 }
