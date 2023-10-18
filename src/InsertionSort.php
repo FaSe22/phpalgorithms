@@ -2,7 +2,7 @@
 
 namespace Src;
 
-class Insertionsort
+class InsertionSort
 {
     /**
      * @param array<int,float> $arr

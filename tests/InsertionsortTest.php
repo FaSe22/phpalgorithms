@@ -5,7 +5,7 @@ declare(strict_types=1);
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Src\Insertionsort;
+use Src\InsertionSort;
 
 final class InsertionsortTest extends TestCase
 {
@@ -13,7 +13,7 @@ final class InsertionsortTest extends TestCase
     #[DataProvider('arrayProvider')]
     public function it_should_return_the_sorted_array($arr)
     {
-        $this->assertEquals([1,2,3,4,5,6,7,8,9], Insertionsort::sort($arr));
+        $this->assertEquals([1,2,3,4,5,6,7,8,9], InsertionSort::sort($arr));
     }
 
     /*
@@ -35,19 +35,19 @@ final class InsertionsortTest extends TestCase
     #[Test]
     public function it_should_sort_single_element_array()
     {
-        $this->assertEquals([4], Insertionsort::sort([4]));
+        $this->assertEquals([4], InsertionSort::sort([4]));
     }
 
     #[Test]
     public function test_empty_array()
     {
-        $this->assertEquals([], Insertionsort::sort([]));
+        $this->assertEquals([], InsertionSort::sort([]));
     }
 
     #[Test]
     public function it_should_sort_non_consecutive_numbers_correctly()
     {
-        $this->assertEquals([2,5,6,8,9], Insertionsort::sort([5,9,6,2,8]));
+        $this->assertEquals([2,5,6,8,9], InsertionSort::sort([5,9,6,2,8]));
     }
 
     #[Test]
@@ -55,6 +55,6 @@ final class InsertionsortTest extends TestCase
     {
         $random = range(1, 1000);
         shuffle($random);
-        $this->assertEquals(range(1, 1000), Insertionsort::sort($random));
+        $this->assertEquals(range(1, 1000), InsertionSort::sort($random));
     }
 }
