@@ -5,14 +5,19 @@ namespace Src;
 class Insertionsort
 {
     /**
-    * @param array $arr
-    * @return array
-    */
+     * @param array<int,float> $arr
+     * @param String $method the variant of sorting algorithm to use as a String (default="variant1")
+     * @return array<int,float>
+     */
     public static function sort(array $arr, String $method = "variant1"): array
     {
         return self::$method($arr);
     }
 
+    /**
+     * @param array<int,float> $arr
+     * @return array<int,float>
+     */
     private static function variant1(array $arr): array
     {
         // iterate over all elements
@@ -34,6 +39,10 @@ class Insertionsort
         return $arr;
     }
 
+    /**
+     * @param array<int,float> $arr
+     * @return array<int,float>
+     */
     private static function variant2(array $arr): array
     {
         // start from the first array and iterate over all
