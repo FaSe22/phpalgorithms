@@ -49,6 +49,9 @@ class Node
         return $this->right = $newNode;
     }
 
+    /**
+     * @return array<int, float>
+     */
     public function flatten(): array
     {
         $left = [];
