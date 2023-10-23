@@ -5,9 +5,9 @@ namespace Src;
 class BinaryTree
 {
     /**
-    * @param array $arr
-    * @return array
-    */
+     * @param array<int, float> $arr
+     * @return array<int, float>
+     */
     public static function sort(array $arr): array
     {
         $tree = new Tree($arr[0]);
