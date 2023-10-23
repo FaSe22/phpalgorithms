@@ -55,6 +55,7 @@ jobs:
         - phpstan
 
       steps:
+        - uses: actions/checkout@v3
         - name: SonarCloud Scan
           uses: SonarSource/sonarcloud-github-action@master
           env:
