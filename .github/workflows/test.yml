@@ -48,7 +48,16 @@ jobs:
             name: report
             path: .phpstan/report.json
 
-          
+  sonarcloud:
+      name: SonarCloud
+      runs-on: ubuntu-latest
+      permissions: write-all
+
+      needs:
+        - tests
+        - phpstan
+
+      steps:
         - name: SonarCloud Scan
           uses: SonarSource/sonarcloud-github-action@master
           env:
