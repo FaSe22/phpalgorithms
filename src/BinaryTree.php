@@ -12,6 +12,9 @@ class BinaryTree
      */
     public static function sort(array $arr): array
     {
+        if (empty($arr)) {
+            return [];
+        }
         $tree = new Tree($arr[0]);
         for ($i=1; $i<count($arr); $i++) {
             $tree->put($arr[$i]);
