@@ -3,7 +3,7 @@
 namespace Tests\Benchmark;
 
 use PhpBench\Attributes as Bench;
-use Src\Insertionsort;
+use Src\InsertionSort;
 
 class InsertionsortBench
 {
@@ -13,7 +13,7 @@ class InsertionsortBench
     #[Bench\Timeout(10.0)]
     public function benchInsertionsort(array $params)
     {
-        Insertionsort::sort($params['arr']);
+        InsertionSort::sort($params['arr']);
     }
 
     public function provideArray()
