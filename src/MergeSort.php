@@ -10,8 +10,8 @@ class MergeSort
      */
     public static function sort(array $arr): array
     {
-        if (empty($arr)) {
-            return [];
+        if (count($arr) <= 1) {
+            return $arr;
         }
         $middle = (int)(count($arr)/2);
         $left = array_splice($arr, 0, $middle);
