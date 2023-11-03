@@ -10,6 +10,9 @@ class MergeSort
      */
     public static function sort(array $arr): array
     {
+        if (empty($arr)) {
+            return [];
+        }
         return $arr;
     }
 }
