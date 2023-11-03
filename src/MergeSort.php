@@ -13,7 +13,7 @@ class MergeSort
         if (count($arr) <= 1) {
             return $arr;
         }
-        $middle = (int)(count($arr)/2);
+        $middle = (int)(count($arr) / 2);
         $left = array_splice($arr, 0, $middle);
         $right = $arr;
         $left = self::sort($left);
@@ -40,10 +40,10 @@ class MergeSort
                 $j++;
             }
         }
-        for (; $i<count($left); $i++) {
+        for (; $i < count($left); $i++) {
             $result[] = $left[$i];
         }
-        for (; $j<count($right); $j++) {
+        for (; $j < count($right); $j++) {
             $result[] = $right[$j];
         }
         return $result;
