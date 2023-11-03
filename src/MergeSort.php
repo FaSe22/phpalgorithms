@@ -30,9 +30,16 @@ class MergeSort
     {
         $i = 0;
         $j = 0;
+        $result = [];
         do {
-
+            if ($left[$i]<$right[$j]) {
+                $result[] = $left[$i];
+                $i++;
+            } else {
+                $result[] = $right[$j];
+                $j++;
+            }
         } while($i<count($left) && $j<count($left));
-        return array_merge($left, $right);
+        return $result;
     }
 }
