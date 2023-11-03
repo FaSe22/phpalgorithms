@@ -31,15 +31,15 @@ class MergeSort
         $i = 0;
         $j = 0;
         $result = [];
-        do {
-            if ($left[$i]<$right[$j]) {
+        while ($i < count($left) && $j < count($left)) {
+            if ($left[$i] < $right[$j]) {
                 $result[] = $left[$i];
                 $i++;
             } else {
                 $result[] = $right[$j];
                 $j++;
             }
-        } while($i<count($left) && $j<count($left));
+        }
         for (; $i<count($left); $i++) {
             $result[] = $left[$i];
         }
