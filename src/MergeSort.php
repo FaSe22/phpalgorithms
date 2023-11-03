@@ -28,6 +28,11 @@ class MergeSort
      */
     public static function merge(array $left, array $right)
     {
+        $i = 0;
+        $j = 0;
+        do {
+
+        } while($i<count($left) && $j<count($left));
         return array_merge($left, $right);
     }
 }
