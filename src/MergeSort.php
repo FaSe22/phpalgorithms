@@ -20,4 +20,14 @@ class MergeSort
         $right = self::sort($right);
         return self::merge($left, $right);
     }
+
+    /**
+     * @param array<int, float> $left
+     * @param array<int, float> $right
+     * @return array<int, float>
+     */
+    public static function merge(array $left, array $right)
+    {
+        return array_merge($left, $right);
+    }
 }
