@@ -30,7 +30,7 @@ class MergeSort
         $i = 0;
         $j = 0;
         $result = [];
-        while ($i < count($left) && $j < count($left)) {
+        while ($i < count($left) && $j < count($right)) {
             if ($left[$i] < $right[$j]) {
                 $result[] = $left[$i];
                 $i++;
