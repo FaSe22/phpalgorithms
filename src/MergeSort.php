@@ -40,6 +40,12 @@ class MergeSort
                 $j++;
             }
         } while($i<count($left) && $j<count($left));
+        for (; $i<count($left); $i++) {
+            $result[] = $left[$i];
+        }
+        for (; $j<count($right); $j++) {
+            $result[] = $right[$j];
+        }
         return $result;
     }
 }
