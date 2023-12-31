@@ -17,6 +17,7 @@ class MergeSort
         $left = array_splice($arr, 0, $middle);
         $left = self::sort($left);
         $right = self::sort($arr);
+
         return self::merge($left, $right);
     }
 
@@ -45,6 +46,7 @@ class MergeSort
         for (; $j < count($right); $j++) {
             $result[] = $right[$j];
         }
+
         return $result;
     }
 }
