@@ -16,7 +16,7 @@ class Gnomesort
                 $tmp = $arr[$i];
                 $arr[$i] = $arr[$i+1];
                 $arr[$i+1] = $tmp;
-                $i = $i == 0 ? 0 : $i-1;
+                $i = max(0, $i - 1);
             } else {
                 $i = $i + 1;
             }
