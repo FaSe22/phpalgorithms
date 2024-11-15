@@ -11,7 +11,8 @@ class Gnomesort
     public static function sort(array $arr): array
     {
         $i = 0;
-        while ($i < count($arr) - 1) {
+        $n = count($arr);
+        while ($i < $n - 1) {
             if ($arr[$i] > $arr[$i + 1]) {
                 [$arr[$i], $arr[$i + 1]] = [$arr[$i + 1], $arr[$i]];
                 $tmp = $arr[$i];
