@@ -13,6 +13,7 @@ class Gnomesort
         $i = 0;
         while ($i < count($arr) - 1) {
             if ($arr[$i] > $arr[$i + 1]) {
+                [$arr[$i], $arr[$i + 1]] = [$arr[$i + 1], $arr[$i]];
                 $tmp = $arr[$i];
                 $arr[$i] = $arr[$i + 1];
                 $arr[$i + 1] = $tmp;
