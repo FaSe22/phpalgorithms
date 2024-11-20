@@ -15,9 +15,6 @@ class Gnomesort
         while ($i < $n - 1) {
             if ($arr[$i] > $arr[$i + 1]) {
                 [$arr[$i], $arr[$i + 1]] = [$arr[$i + 1], $arr[$i]];
-                $tmp = $arr[$i];
-                $arr[$i] = $arr[$i + 1];
-                $arr[$i + 1] = $tmp;
                 $i = max(0, $i - 1);
             } else {
                 $i++;
