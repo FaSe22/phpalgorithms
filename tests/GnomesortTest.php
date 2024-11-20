@@ -35,7 +35,6 @@ final class GnomesortTest extends TestCase
         ];
     }
 
-
     #[Test]
     public function it_should_sort_single_element_array(): void
     {
