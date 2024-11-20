@@ -1,53 +1,52 @@
-name: CI
- 
-on:
-  - pull_request
-  - push
-  
-jobs:
-  tests:
-      name: Tests
-      runs-on: ubuntu-latest
-      
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v4
-          with:
-            fetch-depth: 0
-          
-        - name: Setup PHP with Xdebug
-          uses: shivammathur/setup-php@v2
-          with:
-            php-version: '8.1'
-            coverage: xdebug
-            
-        - name: Install dependencies with composer
-          run: composer update --no-ansi --no-interaction --no-progress
-          
-        - name: Run tests with phpunit/phpunit
-          run: vendor/bin/phpunit --coverage-clover=coverage.xml
-          
-        - name: Fix code coverage paths
-          run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.xml
-          
-  phpstan:
-      name: Phpstan
-      runs-on: ubuntu-latest
-      permissions: write-all
-      steps:
-        - uses: actions/checkout@v4
-        - uses: php-actions/composer@v6
-        - name: PHPStan
-          run: echo $(vendor/bin/phpstan analyze --error-format=json) > .phpstan/report.json
-        - name: Upload PHPStan report to GitHub
-          uses: actions/upload-artifact@v4
-          with:
-            name: report
-            path: .phpstan/report.json
+name: PHP Tests & Analysis
 
-          
-        - name: SonarCloud Scan
-          uses: SonarSource/sonarcloud-github-action@master
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        coverage: xdebug
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+    - name: Run PHPUnit
+      run: vendor/bin/phpunit --coverage-clover coverage.xml
+
+    - name: Run PHPStan
+      run: vendor/bin/phpstan analyse src tests --level=8 --error-format=checkstyle > phpstan-report.xml || true
+
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        args: >
+          -Dsonar.sources=src
+          -Dsonar.tests=tests
+          -Dsonar.php.coverage.reportPaths=coverage.xml
+          -Dsonar.php.phpstan.reportPaths=phpstan-report.xml
