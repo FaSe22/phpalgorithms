@@ -20,7 +20,7 @@ class Gnomesort
                 $arr[$i + 1] = $tmp;
                 $i = max(0, $i - 1);
             } else {
-                $i = $i + 1;
+                $i++;
             }
         }
         return $arr;
