@@ -58,7 +58,7 @@ class Strategy
      * @param int $index of the current item
      * @return int index of the neighbor of the index element
      */
-    public function neightbor(int $index): int
+    public function neighbor(int $index): int
     {
         return $index + $this->neighbor;
     }
@@ -68,7 +68,7 @@ class Strategy
      * @param int $length of the array
      * @return bool if the loop should continue
      */
-    public function contionue(int $index, int $length): bool
+    public function continue(int $index, int $length): bool
     {
         return ($this->condition)($index, $length);
     }
