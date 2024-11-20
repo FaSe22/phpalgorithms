@@ -2,6 +2,8 @@
 
 namespace Src;
 
+use Closure;
+
 class Shakersort
 {
     /**
@@ -11,5 +13,69 @@ class Shakersort
     public static function sort(array $arr): array
     {
         return $arr;
+    }
+}
+
+class Strategy
+{
+    private int $counter;
+    private int $neighbor;
+    private Closure $operator;
+    private Closure $condition;
+
+    public function __construct()
+    {
+        $this->counter = 1;
+        $this->neighbor = 1;
+        $this->operator = function ($a, $b) {
+            return $a > $b;
+        };
+        $this->condition = function ($index, $length) {
+            return $index < $length;
+        };
+    }
+
+    public function move($current): int
+    {
+        return $current + $this->counter;
+    }
+
+    public function check($a, $b): bool
+    {
+        return ($this->operator)($a, $b);
+    }
+
+    public function neightbor($index): int
+    {
+        return $index + $this->neighbor;
+    }
+
+    public function contionue($index, $length): bool
+    {
+        return ($this->condition)($index, $length);
+    }
+
+    public function switch(): void
+    {
+        $this->counter = $this->counter * -1;
+        $this->neighbor = $this->neighbor * -1;
+        if (($this->operator)(1, 2)) {
+            $this->operator = function ($a, $b) {
+                return $a < $b;
+            };
+        } else {
+            $this->operator = function ($a, $b) {
+                return $a < $b;
+            };
+        }
+        if (($this->condition)(2, 2)) {
+            $this->condition = function ($index, $length) {
+                return $index < $length;
+            };
+        } else {
+            $this->condition = function ($index, $length) {
+                return $index > 0;
+            };
+        }
     }
 }
