@@ -83,7 +83,7 @@ class Strategy
         $this->neighbor = $this->neighbor * -1;
         if (($this->operator)(1, 2)) {
             $this->operator = function ($a, $b) {
-                return $a < $b;
+                return $a > $b;
             };
         } else {
             $this->operator = function ($a, $b) {
