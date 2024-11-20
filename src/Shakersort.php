@@ -35,26 +35,48 @@ class Strategy
         };
     }
 
-    public function move($current): int
+    /**
+     * @param int $current position on the array
+     * @return int next item in line
+     */
+    public function move(int $current): int
     {
         return $current + $this->counter;
     }
 
-    public function check($a, $b): bool
+    /**
+     * @param int $a current item
+     * @param int $b neighboring item
+     * @return bool if a switch needs to happen
+     */
+    public function check(int $a, int $b): bool
     {
         return ($this->operator)($a, $b);
     }
 
-    public function neightbor($index): int
+    /**
+     * @param int $index of the current item
+     * @return int index of the neighbor of the index element
+     */
+    public function neightbor(int $index): int
     {
         return $index + $this->neighbor;
     }
 
-    public function contionue($index, $length): bool
+    /**
+     * @param int $index of the current item
+     * @param int $length of the array
+     * @return bool if the loop should continue
+     */
+    public function contionue(int $index, int $length): bool
     {
         return ($this->condition)($index, $length);
     }
 
+    /**
+     * Changes the operational order of the Strategy
+     * @return void
+     */
     public function switch(): void
     {
         $this->counter = $this->counter * -1;
