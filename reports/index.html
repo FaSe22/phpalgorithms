@@ -15,9 +15,9 @@
 <script>
 var data = [
         {
-        x: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
+        x: [0,1,2,3,4],
         name: '<current>',
-        y: [18.679,18.42,18.63,18.638,18.553,18.582,18.573,18.646,18.834,18.547,18.753,18.461,18.625,18.607,18.527,18.721,18.592,18.881,18.661,18.553],
+        y: [28375.043052837547,26427.715068493173,27862.42974559686,27407.772211350304,28539.892759295522],
         type: 'bar',
             },
     ]
@@ -25,15 +25,15 @@ var layout = {
     barmode: 'group',
     yaxis: {
         tickmode: 'array',
-        tickvals: [0,1.8881000000000001,3.7762000000000002,5.664300000000001,7.5524000000000004,9.4405,11.328600000000002,13.216700000000001,15.104800000000001,16.992900000000002,18.881],
-        ticktext: ["0.0<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","1.9<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","3.8<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","5.7<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","7.6<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","9.4<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","11.3<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","13.2<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","15.1<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","17.0<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","18.9<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n"]    },
+        tickvals: [0,2853.989275929552,5707.978551859104,8561.967827788656,11415.957103718209,14269.946379647761,17123.935655577312,19977.924931506866,22831.914207436417,25685.903483365968,28539.892759295522],
+        ticktext: ["0.0<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","2.9<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","5.7<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","8.6<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","11.4<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","14.3<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","17.1<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","20.0<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","22.8<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","25.7<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","28.5<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n"]    },
     xaxis: {
         tickmode: 'array',
-        tickvals: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
-        ticktext: ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],
+        tickvals: [0,1,2,3,4],
+        ticktext: ["0","1","2","3","4"],
     }
 };
-layout.title = "Example Bar Chart";
+layout.title = "Bubblesort Bench";
 Plotly.newPlot(document.getElementById('phpbench-component-4'), data, layout);
 </script>
             </div>
