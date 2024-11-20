@@ -5,8 +5,8 @@ namespace Src;
 class Gnomesort
 {
     /**
-     * @param array $arr
-     * @return array
+     * @param array<int> $arr
+     * @return array<int>
      */
     public static function sort(array $arr): array
     {
