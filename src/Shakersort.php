@@ -12,6 +12,21 @@ class Shakersort
      */
     public static function sort(array $arr): array
     {
+        $strategy = new Strategy();
+        $run = true;
+        $length = count($arr);
+        $i = 0;
+        while ($run) {
+            $run = false;
+            for (; $strategy->continue($i, $length-1); $i = $strategy->move($i)) {
+                $neighbor = $strategy->neighbor($i);
+                if ($strategy->check($arr[$i], $arr[$neighbor])) {
+                    [$arr[$neighbor], $arr[$i]] = [$arr[$i], $arr[$neighbor]];
+                    $run = true;
+                }
+            }
+            $strategy->switch();
+        }
         return $arr;
     }
 }
