@@ -40,7 +40,7 @@ jobs:
         - name: PHPStan
           run: echo $(vendor/bin/phpstan analyze --error-format=json) > .phpstan/report.json
         - name: Upload PHPStan report to GitHub
-          uses: actions/upload-artifact@latest
+          uses: actions/upload-artifact@v3
           with:
             name: report
             path: .phpstan/report.json
