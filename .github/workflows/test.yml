@@ -1,30 +1,52 @@
-name: PHP CI with PHPUnit Coverage
+name: PHP Tests & Analysis
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  
 
-    - name: Set up PHP
+    - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.2'
+        coverage: xdebug
 
-    - name: Install Composer
-      run: |
-        curl -sS https://getcomposer.org/installer | php
-        mv composer.phar /usr/local/bin/composer
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
 
-    - name: Install dependencies
-      run: composer install
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-    - name: Run PHPUnit tests with code coverage
-      run: |
-        vendor/bin/phpunit tests
-  
+    - name: Run PHPUnit
+      run: vendor/bin/phpunit --coverage-clover coverage.xml
+
+    - name: Run PHPStan
+      run: vendor/bin/phpstan analyse src tests --level=8 --error-format=checkstyle > phpstan-report.xml || true
+
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+        args: >
+          -Dsonar.sources=src
+          -Dsonar.tests=tests
+          -Dsonar.php.coverage.reportPaths=coverage.xml
+          -Dsonar.php.phpstan.reportPaths=phpstan-report.xml
