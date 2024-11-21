@@ -16,7 +16,7 @@ final class BinaryTreeTest extends TestCase
     #[DataProvider('arrayProvider')]
     public function it_should_return_the_sorted_array(array $arr): void
     {
-        $this->assertEquals([1,2,3,4,5,6,7,8,9], BinaryTree::sort($arr));
+        $this->assertEquals([1, 2, 3, 4, 5, 6, 7, 8, 9], BinaryTree::sort($arr));
     }
 
     /**
@@ -25,14 +25,14 @@ final class BinaryTreeTest extends TestCase
     public static function arrayProvider(): array
     {
         return [
-        [[1,2,3,4,5,6,7,8,9]],
-        [[9,8,7,6,5,4,3,2,1]],
-        [[1,2,3,9,8,7,6,5,4]],
-        [[9,8,7,1,2,3,4,5,6]],
-        [[9,1,8,2,7,3,6,4,5]],
-        [[1,9,2,8,3,7,4,6,5]],
-        [[6,4,1,8,3,9,2,5,7]],
-    ];
+            [[1, 2, 3, 4, 5, 6, 7, 8, 9]],
+            [[9, 8, 7, 6, 5, 4, 3, 2, 1]],
+            [[1, 2, 3, 9, 8, 7, 6, 5, 4]],
+            [[9, 8, 7, 1, 2, 3, 4, 5, 6]],
+            [[9, 1, 8, 2, 7, 3, 6, 4, 5]],
+            [[1, 9, 2, 8, 3, 7, 4, 6, 5]],
+            [[6, 4, 1, 8, 3, 9, 2, 5, 7]],
+        ];
     }
 
     #[Test]
@@ -50,7 +50,7 @@ final class BinaryTreeTest extends TestCase
     #[Test]
     public function it_should_sort_non_consecutive_numbers_correctly(): void
     {
-        $this->assertEquals([2,5,6,8,9], BinaryTree::sort([5,9,6,2,8]));
+        $this->assertEquals([2, 5, 6, 8, 9], BinaryTree::sort([5, 9, 6, 2, 8]));
     }
 
     #[Test]
