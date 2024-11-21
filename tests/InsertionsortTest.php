@@ -9,17 +9,21 @@ use Src\InsertionSort;
 
 final class InsertionsortTest extends TestCase
 {
+    /**
+     * @param array<int> $arr
+     * @return void
+     */
     #[Test]
     #[DataProvider('arrayProvider')]
-    public function it_should_return_the_sorted_array($arr)
+    public function it_should_return_the_sorted_array(array $arr): void
     {
         $this->assertEquals([1,2,3,4,5,6,7,8,9], InsertionSort::sort($arr));
         $this->assertEquals([1,2,3,4,5,6,7,8,9], InsertionSort::sort($arr, "variant2"));
     }
 
-    /*
-    * @return array
-    */
+    /**
+     * @return array<int, array<int, array<int, int>>>
+     */
     public static function arrayProvider(): array
     {
         return [
@@ -34,28 +38,28 @@ final class InsertionsortTest extends TestCase
     }
 
     #[Test]
-    public function it_should_sort_single_element_array()
+    public function it_should_sort_single_element_array(): void
     {
         $this->assertEquals([4], InsertionSort::sort([4]));
         $this->assertEquals([4], InsertionSort::sort([4], "variant2"));
     }
 
     #[Test]
-    public function test_empty_array()
+    public function test_empty_array(): void
     {
         $this->assertEquals([], InsertionSort::sort([]));
         $this->assertEquals([], InsertionSort::sort([], "variant2"));
     }
 
     #[Test]
-    public function it_should_sort_non_consecutive_numbers_correctly()
+    public function it_should_sort_non_consecutive_numbers_correctly(): void
     {
         $this->assertEquals([2,5,6,8,9], InsertionSort::sort([5,9,6,2,8]));
         $this->assertEquals([2,5,6,8,9], InsertionSort::sort([5,9,6,2,8], "variant2"));
     }
 
     #[Test]
-    public function it_can_sort_array_with_1000_elements()
+    public function it_can_sort_array_with_1000_elements(): void
     {
         $random = range(1, 1000);
         shuffle($random);
