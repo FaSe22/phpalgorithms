@@ -9,6 +9,9 @@ use Src\BinaryTree;
 
 final class BinaryTreeTest extends TestCase
 {
+    /**
+     * @param array<int> $arr
+     */
     #[Test]
     #[DataProvider('arrayProvider')]
     public function it_should_return_the_sorted_array(array $arr): void
@@ -16,9 +19,9 @@ final class BinaryTreeTest extends TestCase
         $this->assertEquals([1,2,3,4,5,6,7,8,9], BinaryTree::sort($arr));
     }
 
-    /*
-    * @return array
-    */
+    /**
+     * @return array<int, array<int, array<int, int>>>
+     */
     public static function arrayProvider(): array
     {
         return [
