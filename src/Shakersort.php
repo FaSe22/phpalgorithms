@@ -18,7 +18,7 @@ class Shakersort
         $i = 0;
         while ($run) {
             $run = false;
-            for (; $shaker->continue($i, $length-1); $i = $shaker->move($i)) {
+            for (; $shaker->continue($i, $length - 1); $i = $shaker->move($i)) {
                 $neighbor = $shaker->neighbor($i);
                 if ($shaker->check($arr[$i], $arr[$neighbor])) {
                     [$arr[$neighbor], $arr[$i]] = [$arr[$i], $arr[$neighbor]];
@@ -27,6 +27,7 @@ class Shakersort
             }
             $shaker->switch();
         }
+
         return $arr;
     }
 }
