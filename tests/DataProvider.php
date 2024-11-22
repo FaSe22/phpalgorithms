@@ -9,8 +9,8 @@ class DataProvider
             $power = floor(log10($number));
             $method = 10 ** $power;
         }
-        $method = "oneToNine" . $method;
-        return call_user_func([self::class, $method]);
+        $method = __METHOD__ . $method;
+        return call_user_func($method);
     }
 
     private static function oneToNine1(): array
