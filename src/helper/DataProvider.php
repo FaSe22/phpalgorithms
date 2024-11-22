@@ -2,7 +2,7 @@
 
 class DataProvider
 {
-    public static function oneToNine(int $number = 100): mixed
+    public static function oneToNine(int $number = 100): array
     {
         $method = 1;
         if ($number > 2 && $number < 9999) {
@@ -11,7 +11,7 @@ class DataProvider
         return call_user_func(__METHOD__ . $method);
     }
 
-    public static function oneToNineNine(int $number = 1): mixed
+    public static function oneToNineNine(int $number = 1): array
     {
         $method = 1;
         if ($number > 2 && $number < 99) {
@@ -20,7 +20,7 @@ class DataProvider
         return call_user_func(__METHOD__ . $method);
     }
 
-    public static function oneToNineNineNine(int $number = 1): mixed
+    public static function oneToNineNineNine(int $number = 1): array
     {
         $method = 1;
         if ($number > 2 && $number < 99) {
