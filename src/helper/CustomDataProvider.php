@@ -2,7 +2,7 @@
 
 namespace Src\helper;
 
-class DataProvider
+class CustomDataProvider
 {
     public static function oneToNine(int $number = 100): array
     {
