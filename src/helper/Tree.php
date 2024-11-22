@@ -16,10 +16,11 @@ class Tree
         return $this->root;
     }
 
-    public function put($value, Node $node=null): void
+    public function put($value, Node $node = null): void
     {
         if ($node == null) {
             $this->put($value, $this->root);
+
             return;
         }
         if ($node->value() < $value) {

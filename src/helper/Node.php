@@ -40,12 +40,14 @@ class Node
     public function setLeft($value): Node
     {
         $newNode = new Node($value, $this);
+
         return $this->left = $newNode;
     }
 
     public function setRight($value): Node
     {
         $newNode = new Node($value, $this);
+
         return $this->right = $newNode;
     }
 
@@ -60,8 +62,9 @@ class Node
             $left = $this->left()->flatten();
         }
         if ($this->right != null) {
-            $right =  $this->right()->flatten();
+            $right = $this->right()->flatten();
         }
+
         return array_merge($left, [$this->value], $right);
     }
 }

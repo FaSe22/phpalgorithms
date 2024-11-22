@@ -16,8 +16,8 @@ class QuickSort
         $pivot = $arr[0];
         $right = [];
         $left = [];
-        for ($i= 1; $i < count($arr); $i++) {
-            if ($arr[$i]<$pivot) {
+        for ($i = 1; $i < count($arr); $i++) {
+            if ($arr[$i] < $pivot) {
                 $right[] = $arr[$i];
             } else {
                 $left[] = $arr[$i];
@@ -26,6 +26,7 @@ class QuickSort
         $right = self::sort($right);
         $right[] = $pivot;
         $left = self::sort($left);
+
         return array_merge($right, $left);
     }
 }
