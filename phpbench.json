@@ -5,8 +5,8 @@
     "report.generators": {
         "sort_duration": {
             "extends": "default",
-            "title": "Sorting Speed",
-            "description": "Benchmark Bubblesort::sort",
+            "title": "Sorting Algorithms Speed Comparison",
+            "description": "Benchmark results for all sorting algorithms",
             "cols": [ "subject", "mode" ]
         },
         "chart": {
@@ -14,9 +14,9 @@
             "components": [
                 {
                     "component": "bar_chart_aggregate",
-                    "title": "Bubblesort Bench",
                     "x_partition": ["iteration_index"],
                     "bar_partition": ["suite_tag"],
+                    "title": "Sorting Algorithms Benchmarks",
                     "y_expr": "mode(partition['result_time_avg'])",
                     "y_axes_label": "yValue as time precision 1"
                 }
