@@ -1,5 +1,7 @@
 <?php
 
+namespace Src\helper;
+
 class DataProvider
 {
     public static function oneToNine(int $number = 100): array
