@@ -14,9 +14,9 @@
             "components": [
                 {
                     "component": "bar_chart_aggregate",
-                    "x_partition": ["iteration_index"],
-                    "bar_partition": ["suite_tag"],
                     "title": "Sorting Algorithms Benchmarks",
+                    "x_partition": ["subject_name"],
+                    "bar_partition": ["iteration_index"],
                     "y_expr": "mode(partition['result_time_avg'])",
                     "y_axes_label": "yValue as time precision 1"
                 }
