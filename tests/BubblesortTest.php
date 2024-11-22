@@ -12,14 +12,14 @@ final class BubblesortTest extends TestCase
 {
     #[Test]
     #[DataProvider('arrayProvider')]
-    public function it_should_return_the_sorted_array($arr)
+    public function it_should_return_the_sorted_array(array $arr): void
     {
         $this->assertEquals([1,2,3,4,5,6,7,8,9], Bubblesort::sort($arr));
     }
 
     #[Test]
     #[DataProvider('variantProvider')]
-    public function it_should_return_the_sorted_array_for_variants($variant)
+    public function it_should_return_the_sorted_array_for_variants(string $variant): void
     {
         $this->assertEquals([1,2,3,4,5,6,7,8,9], Bubblesort::sort([9,5,6,8,3,2,1,4,7], $variant));
     }
@@ -48,21 +48,21 @@ final class BubblesortTest extends TestCase
 
     #[Test]
     #[DataProvider('variantProvider')]
-    public function it_should_sort_single_element_array($variant)
+    public function it_should_sort_single_element_array(string $variant): void
     {
         $this->assertEquals([4], Bubblesort::sort([4], $variant));
     }
 
     #[Test]
     #[DataProvider('variantProvider')]
-    public function test_empty_array($variant)
+    public function test_empty_array(string $variant): void
     {
         $this->assertEquals([], Bubblesort::sort([], $variant));
     }
 
     #[Test]
     #[DataProvider('variantProvider')]
-    public function it_should_sort_non_consecutive_numbers_correctly($variant)
+    public function it_should_sort_non_consecutive_numbers_correctly(string $variant): void
     {
         $this->assertEquals([2,5,6,8,9], Bubblesort::sort([5,9,6,2,8], $variant));
     }
