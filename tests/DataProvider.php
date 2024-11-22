@@ -6,11 +6,9 @@ class DataProvider
     {
         $method = 1;
         if ($number > 2 && $number < 9999) {
-            $power = floor(log10($number));
-            $method = 10 ** $power;
+            $method = 10 ** floor(log10($number));
         }
-        $method = __METHOD__ . $method;
-        return call_user_func($method);
+        return call_user_func(__METHOD__ . $method);
     }
 
     private static function oneToNine1(): array
