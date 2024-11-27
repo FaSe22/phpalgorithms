@@ -12,6 +12,18 @@ class RadixSort
      */
     public static function sort(array $arr): array
     {
+        $n = count($arr);
+        $partitions = [];
+        for($i = 0; $i < $n; $i++) {
+            $partitions[$arr[$i]%10][] = $arr[$i];
+        }
+        $arr = [];
+        for($i = 0; $i < 10; $i++) {
+            if(!empty($partitions[$i])) {
+                echo json_encode($partitions[$i]);
+                $arr = array_merge($arr, $partitions[$i]);
+            }
+        }
         return $arr;
     }
 }
