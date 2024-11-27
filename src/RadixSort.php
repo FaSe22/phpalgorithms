@@ -19,9 +19,7 @@ class RadixSort
         }
         $arr = [];
         for($i = 0; $i < 10; $i++) {
-            if(!empty($partitions[$i])) {
-                $arr = array_merge($arr, $partitions[$i]);
-            }
+            $arr = array_merge($arr, $partitions[$i] ?? []);
         }
         return $arr;
     }
