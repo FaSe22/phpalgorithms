@@ -11,6 +11,9 @@ class RadixSort
     public static function sort(array $arr): array
     {
         $n = count($arr);
+        if($n === 0){
+            return $arr;
+        }
         $divider = 10;
         while (true) {
             $partitions = [];
