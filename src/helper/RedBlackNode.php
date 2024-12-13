@@ -19,7 +19,8 @@ class RedBlackNode
         return $this->value;
     }
 
-    public function getParent(): ?RedBlackNode {
+    public function getParent(): ?RedBlackNode
+    {
         return $this->parent;
     }
 
@@ -55,7 +56,7 @@ class RedBlackNode
 
     public function uncle(): ?RedBlackNode
     {
-        if ($this->parent == null || $this->parent->getParent() == null) {
+        if (!$this->parent || !$this->parent->getParent()) {
             return null;
         }
         return $this->parent === $this->parent->getParent()->getLeft()
