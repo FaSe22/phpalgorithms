@@ -13,23 +13,23 @@ class RedBlackTree
         return $this->root;
     }
 
-    public function insert(RedBlackNode $node): void
+    public function insert(int $value): void
     {
         if ($this->root == null) {
-            $this->root = $node;
-            $node->setColor(Color::Black);
+            $this->root = new RedBlackNode($value);
+            $this->root->setColor(Color::Black);
         }
         $pointer = $this->root;
         do {
-            if ($node->getValue() < $pointer->getValue()) {
+            if ($value < $pointer->getValue()) {
                 if ($pointer->getLeft() == null) {
-                    $pointer->setLeft($node);
+                    $pointer->setLeft(new RedBlackNode($value, $pointer));
                     break;
                 }
                 $pointer = $pointer->getLeft();
             } else {
                 if ($pointer->getRight() == null) {
-                    $pointer->setRight($node);
+                    $pointer->setRight(new RedBlackNode($value, $pointer));
                     break;
                 }
                 $pointer = $pointer->getLRight();

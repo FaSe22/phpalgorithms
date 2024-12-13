@@ -8,6 +8,7 @@ class RedBlackNode
 {
     public function __construct(
         private int           $value,
+        private ?RedBlackNode $parent = null,
         private Color         $color = Color::Red,
         private ?RedBlackNode $left = null,
         private ?RedBlackNode $right = null
