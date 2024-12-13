@@ -23,6 +23,11 @@ class RedBlackNode
         return $this->color;
     }
 
+    public function setColor(Color $color): void
+    {
+        $this->color = $color;
+    }
+
     public function getLeft(): ?RedBlackNode
     {
         return $this->left;
