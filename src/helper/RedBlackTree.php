@@ -19,5 +19,21 @@ class RedBlackTree
             $this->root = $node;
             $node->setColor(Color::Black);
         }
+        $pointer = $this->root;
+        do {
+            if ($node->getValue() < $pointer->getValue()) {
+                if ($pointer->getLeft() == null) {
+                    $pointer->setLeft($node);
+                    break;
+                }
+                $pointer = $pointer->getLeft();
+            } else {
+                if ($pointer->getRight() == null) {
+                    $pointer->setRight($node);
+                    break;
+                }
+                $pointer = $pointer->getLRight();
+            }
+        } while (true);
     }
 }
