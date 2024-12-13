@@ -19,6 +19,10 @@ class RedBlackNode
         return $this->value;
     }
 
+    public function getParent(): ?RedBlackNode {
+        return $this->parent;
+    }
+
     public function getColor(): Color
     {
         return $this->color;
@@ -47,5 +51,15 @@ class RedBlackNode
     public function setRight(RedBlackNode $node): void
     {
         $this->right = $node;
+    }
+
+    public function uncle(): ?RedBlackNode
+    {
+        if ($this->parent == null || $this->parent->getParent() == null) {
+            return null;
+        }
+        return $this->parent === $this->parent->getParent()->getLeft()
+            ? $this->parent->getParent()->getRight()
+            : $this->parent->getParent()->getLeft();
     }
 }
