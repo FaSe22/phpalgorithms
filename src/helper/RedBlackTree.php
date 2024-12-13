@@ -4,9 +4,5 @@ namespace Src\helper;
 
 class RedBlackTree
 {
-    private ?RedBlackNode $root;
-
-    public function __construct() {
-        $this->root = null;
-    }
+    public function __construct(private ?RedBlackNode $root = null) {}
 }

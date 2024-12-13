@@ -6,15 +6,10 @@ use Src\helper\enums\Color;
 
 class RedBlackNode
 {
-    private ?RedBlackNode $left;
-    private ?RedBlackNode $right;
-    private int $value;
-    private Color $color;
-
-    public function __construct(int $value) {
-        $this->value = $value;
-        $this->color = Color::Red;
-        $this->left = null;
-        $this->right = null;
-    }
+    public function __construct(
+        private int $value,
+        private Color $color = Color::Red,
+        private ?RedBlackNode $left = null,
+        private ?RedBlackNode $right = null
+    ) {}
 }
