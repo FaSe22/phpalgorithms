@@ -10,4 +10,11 @@ class RedBlackNode
     private ?RedBlackNode $right;
     private int $value;
     private Color $color;
+
+    public function __construct(int $value) {
+        $this->value = $value;
+        $this->color = Color::Red;
+        $this->left = null;
+        $this->right = null;
+    }
 }
