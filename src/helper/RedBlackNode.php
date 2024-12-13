@@ -33,8 +33,18 @@ class RedBlackNode
         return $this->left;
     }
 
+    public function setLeft(RedBlackNode $node): void
+    {
+        $this->left = $node;
+    }
+
     public function getRight(): ?RedBlackNode
     {
         return $this->right;
+    }
+
+    public function setRight(RedBlackNode $node): void
+    {
+        $this->right = $node;
     }
 }
