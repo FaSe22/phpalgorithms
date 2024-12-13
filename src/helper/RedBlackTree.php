@@ -24,12 +24,14 @@ class RedBlackTree
             if ($value < $pointer->getValue()) {
                 if ($pointer->getLeft() == null) {
                     $pointer->setLeft(new RedBlackNode($value, $pointer));
+                    $pointer = $pointer->getLeft();
                     break;
                 }
                 $pointer = $pointer->getLeft();
             } else {
                 if ($pointer->getRight() == null) {
                     $pointer->setRight(new RedBlackNode($value, $pointer));
+                    $pointer = $pointer->getRight();
                     break;
                 }
                 $pointer = $pointer->getLRight();
