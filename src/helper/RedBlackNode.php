@@ -2,7 +2,7 @@
 
 namespace Src\helper;
 
-use Src\helper\enums\Color;
+use Src\helper\Enum\Color;
 
 class RedBlackNode
 {

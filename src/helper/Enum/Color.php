@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\helper\enums;
+namespace Src\helper\Enum;
 
 enum Color
 {
