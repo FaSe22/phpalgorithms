@@ -37,5 +37,16 @@ class RedBlackTree
                 $pointer = $pointer->getLRight();
             }
         } while (true);
+        do {
+            if ($pointer->getColor() == Color::Black) {
+                break;
+            }
+            if (!$pointer->uncle() && $pointer->uncle()->getColor() == Color::Red) {
+                $pointer->getParent()->setColor(Color::Black);
+                $pointer->uncle()->setColor(Color::Black);
+                $pointer = $pointer->getParent()->getParent();
+                continue;
+            }
+        } while (true);
     }
 }
