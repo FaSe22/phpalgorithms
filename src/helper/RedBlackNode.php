@@ -91,8 +91,8 @@ class RedBlackNode
             return null;
         }
         return $this === $this->parent->getLeft()
-            ? $this->parent->getParent()->getRight()
-            : $this->parent->getParent()->getLeft();
+            ? $this->parent->getRight()
+            : $this->parent->getLeft();
     }
 
     public function rotateRight(): void
