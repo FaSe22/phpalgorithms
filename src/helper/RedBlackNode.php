@@ -75,8 +75,9 @@ class RedBlackNode
             if ($this->parent) {
                 if ($this->parent->getLeft() === $this) {
                     $this->parent->setLeft($this->left);
+                } else {
+                    $this->parent->setRight($this->left);
                 }
-                $this->parent->setRight($this->left);
             }
             $this->parent = $this->left;
             $leftRightGrandchild = $this->parent->getRight();
