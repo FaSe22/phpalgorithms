@@ -132,7 +132,7 @@ class RedBlackNode
         }
         $this->parent = $this->right;
         $rightLeftGrandchild = $this->parent->getLeft();
-        $this->parent->setRight($this);
+        $this->parent->setLeft($this);
         $this->right = $rightLeftGrandchild;
         $rightLeftGrandchild?->setParent($this);
     }
