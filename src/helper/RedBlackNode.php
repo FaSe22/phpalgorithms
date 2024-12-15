@@ -59,6 +59,22 @@ class RedBlackNode
         $this->right = $node;
     }
 
+    public function isLeftChild(): bool
+    {
+        if ($this->parent && $this->parent->getLeft() === $this) {
+            return true;
+        }
+        return false;
+    }
+
+    public function isRightChild(): bool
+    {
+        if ($this->parent && $this->parent->getRight() === $this) {
+            return true;
+        }
+        return false;
+    }
+
     public function uncle(): ?RedBlackNode
     {
         if (!$this->parent || !$this->parent->getParent()) {
