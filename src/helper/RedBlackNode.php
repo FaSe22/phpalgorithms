@@ -85,6 +85,16 @@ class RedBlackNode
             : $this->parent->getParent()->getLeft();
     }
 
+    public function sibling(): ?RedBlackNode
+    {
+        if (!$this->parent) {
+            return null;
+        }
+        return $this === $this->parent->getLeft()
+            ? $this->parent->getParent()->getRight()
+            : $this->parent->getParent()->getLeft();
+    }
+
     public function rotateRight(): void
     {
         if (!$this->left) {
