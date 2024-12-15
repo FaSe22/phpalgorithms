@@ -18,6 +18,7 @@ class RedBlackTree
         if ($this->root == null) {
             $this->root = new RedBlackNode($value);
             $this->root->setColor(Color::Black);
+            return;
         }
         $pointer = $this->root;
         do {
