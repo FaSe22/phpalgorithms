@@ -24,6 +24,11 @@ class RedBlackNode
         return $this->parent;
     }
 
+    public function setParent(RedBlackNode $node): void
+    {
+        $this->parent = $node;
+    }
+
     public function getColor(): Color
     {
         return $this->color;
