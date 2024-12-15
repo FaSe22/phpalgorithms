@@ -34,7 +34,7 @@ class RedBlackTree
                     $pointer = $pointer->getRight();
                     break;
                 }
-                $pointer = $pointer->getLRight();
+                $pointer = $pointer->getRight();
             }
         } while (true);
         do {
