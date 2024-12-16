@@ -42,7 +42,7 @@ class RedBlackTree
             if ($pointer->getColor() == Color::Black) {
                 break;
             }
-            if (!$pointer->uncle() && $pointer->uncle()->getColor() == Color::Red) {
+            if ($pointer->uncle() && $pointer->uncle()->getColor() == Color::Red) {
                 $pointer->getParent()->setColor(Color::Black);
                 $pointer->uncle()->setColor(Color::Black);
                 $pointer = $pointer->getParent()->getParent();
