@@ -35,6 +35,52 @@ final class RedBlackTreeTest extends TestCase
         $this->assertEquals(Color::Red, $right->getColor());
     }
 
+    public function testInsertToTheRightTriggersRebalancing(): void
+    {
+        $tree = new RedBlackTree();
+
+        $tree->insert(10);
+        $tree->insert(20);
+        $tree->insert(30);
+
+        $root = $tree->getRoot();
+
+        $this->assertEquals(20, $root->getValue());
+        $this->assertEquals(Color::Black, $root->getColor());
+
+        $left = $root->getLeft();
+        $right = $root->getRight();
+
+        $this->assertEquals(10, $left->getValue());
+        $this->assertEquals(Color::Red, $left->getColor());
+
+        $this->assertEquals(30, $right->getValue());
+        $this->assertEquals(Color::Red, $right->getColor());
+    }
+
+    public function testInsertToTheLeftTriggersRebalancing(): void
+    {
+        $tree = new RedBlackTree();
+
+        $tree->insert(30);
+        $tree->insert(20);
+        $tree->insert(10);
+
+        $root = $tree->getRoot();
+
+        $this->assertEquals(20, $root->getValue());
+        $this->assertEquals(Color::Black, $root->getColor());
+
+        $left = $root->getLeft();
+        $right = $root->getRight();
+
+        $this->assertEquals(10, $left->getValue());
+        $this->assertEquals(Color::Red, $left->getColor());
+
+        $this->assertEquals(30, $right->getValue());
+        $this->assertEquals(Color::Red, $right->getColor());
+    }
+
     public function testNodeGettersAndSetters(): void
     {
         $parent = new RedBlackNode(10);
