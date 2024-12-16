@@ -102,9 +102,9 @@ class RedBlackNode
         if (!$this->left) {
             return;
         }
+        $leftRightGrandchild = $this->left->getRight();
         $this->updateParent($tree, 'left');
         $this->parent = $this->left;
-        $leftRightGrandchild = $this->parent->getRight();
         $this->parent->setRight($this);
         $this->left = $leftRightGrandchild;
         $leftRightGrandchild?->setParent($this);
@@ -115,9 +115,9 @@ class RedBlackNode
         if (!$this->right) {
             return;
         }
+        $rightLeftGrandchild = $this->right->getLeft();
         $this->updateParent($tree, 'right');
         $this->parent = $this->right;
-        $rightLeftGrandchild = $this->parent->getLeft();
         $this->parent->setLeft($this);
         $this->right = $rightLeftGrandchild;
         $rightLeftGrandchild?->setParent($this);
