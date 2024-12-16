@@ -73,4 +73,15 @@ class RedBlackTree
             }
         } while (true);
     }
+
+    private function fixRoot(RedBlackNode $node)
+    {
+        $pointer = $node;
+        while ($node->getParent() != null) {
+            $pointer = $node->getParent();
+        }
+        if ($pointer !== $this->root) {
+            $this->root = $pointer;
+        }
+    }
 }
