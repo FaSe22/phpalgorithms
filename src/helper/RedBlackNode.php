@@ -105,8 +105,7 @@ class RedBlackNode
         $leftRightGrandchild = $this->left->getRight();
         $this->updateParent($tree, 'left');
         $this->left->setRight($this);
-        $this->left = $leftRightGrandchild;
-        $leftRightGrandchild?->setParent($this);
+        $this->setLeft($leftRightGrandchild);
     }
 
     public function rotateLeft(RedBlackTree $tree): void
@@ -117,8 +116,7 @@ class RedBlackNode
         $rightLeftGrandchild = $this->right->getLeft();
         $this->updateParent($tree, 'right');
         $this->right->setLeft($this);
-        $this->right = $rightLeftGrandchild;
-        $rightLeftGrandchild?->setParent($this);
+        $this->setRight($rightLeftGrandchild);
     }
 
     /**
