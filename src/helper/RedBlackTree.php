@@ -81,14 +81,12 @@ class RedBlackTree
             if ($value < $pointer->getValue()) {
                 if ($pointer->getLeft() == null) {
                     $pointer->setLeft($node);
-                    $node->setParent($pointer);
                     return $node;
                 }
                 $pointer = $pointer->getLeft();
             } else {
                 if ($pointer->getRight() == null) {
                     $pointer->setRight($node);
-                    $node->setParent($pointer);
                     return $node;
                 }
                 $pointer = $pointer->getRight();
