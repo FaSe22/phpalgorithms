@@ -123,7 +123,7 @@ class RedBlackNode
 
     /**
      * Update the parent of the node to the child in the $direction
-     * should $this be the root, update parent to null and set the child in $direction as new root
+     * should $this be root (both child check null), update parent to null and set child in $direction as new root
      *
      * @param RedBlackTree $tree
      * @param string $direction left|right
