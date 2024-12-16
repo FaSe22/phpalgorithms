@@ -102,17 +102,7 @@ class RedBlackNode
         if (!$this->left) {
             return;
         }
-        $parent = $this->parent;
-        if ($parent) {
-            if ($this->isLeftChild()) {
-                $parent->setLeft($this->left);
-            } else {
-                $parent->setRight($this->left);
-            }
-        } else {
-            $this->left->setParent(null);
-            $tree->setRoot($this->left);
-        }
+        $this->updateParent($tree, 'left');
         $this->parent = $this->left;
         $leftRightGrandchild = $this->parent->getRight();
         $this->parent->setRight($this);
@@ -125,21 +115,34 @@ class RedBlackNode
         if (!$this->right) {
             return;
         }
-        $parent = $this->parent;
-        if ($parent) {
-            if ($this->isLeftChild()) {
-                $parent->setLeft($this->right);
-            } else {
-                $parent->setRight($this->right);
-            }
-        } else {
-            $this->right->setParent(null);
-            $tree->setRoot($this->right);
-        }
+        $this->updateParent($tree, 'right');
         $this->parent = $this->right;
         $rightLeftGrandchild = $this->parent->getLeft();
         $this->parent->setLeft($this);
         $this->right = $rightLeftGrandchild;
         $rightLeftGrandchild?->setParent($this);
+    }
+
+    /**
+     * Update the parent of the node to the child in the $direction
+     * should $this be the root, update parent to null and set the child in $direction as new root
+     *
+     * @param RedBlackTree $tree
+     * @param string $direction left|right
+     * @return void
+     */
+    private function updateParent(RedBlackTree $tree, string $direction): void
+    {
+        $parent = $this->parent;
+        if ($parent) {
+            if ($this->isLeftChild()) {
+                $parent->setLeft($this->$direction);
+            } else {
+                $parent->setRight($this->$direction);
+            }
+        } else {
+            $this->$direction->setParent(null);
+            $tree->setRoot($this->$direction);
+        }
     }
 }
