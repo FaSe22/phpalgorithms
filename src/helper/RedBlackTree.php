@@ -86,8 +86,8 @@ class RedBlackTree
     private function fixRoot(RedBlackNode $node)
     {
         $pointer = $node;
-        while ($node->getParent() != null) {
-            $pointer = $node->getParent();
+        while ($pointer->getParent() != null) {
+            $pointer = $pointer->getParent();
         }
         if ($pointer !== $this->root) {
             $this->root = $pointer;
