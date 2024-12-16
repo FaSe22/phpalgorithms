@@ -131,13 +131,10 @@ class RedBlackNode
      */
     private function updateParent(RedBlackTree $tree, string $direction): void
     {
-        $parent = $this->parent;
-        if ($parent) {
-            if ($this->isLeftChild()) {
-                $parent->setLeft($this->$direction);
-            } else {
-                $parent->setRight($this->$direction);
-            }
+        if ($this->isLeftChild()) {
+            $this->parent->setLeft($this->$direction);
+        } elseif ($this->isRightChild()) {
+            $this->parent->setRight($this->$direction);
         } else {
             $this->$direction->setParent(null);
             $tree->setRoot($this->$direction);
