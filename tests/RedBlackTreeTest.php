@@ -81,6 +81,36 @@ final class RedBlackTreeTest extends TestCase
         $this->assertEquals(Color::Red, $right->getColor());
     }
 
+    public function testInsertHandlesNegativeValues(): void
+    {
+        $tree = new RedBlackTree();
+
+        $tree->insert(-10);
+        $tree->insert(-20);
+        $tree->insert(-5);
+
+        $root = $tree->getRoot();
+
+        $this->assertEquals(-10, $root->getValue());
+        $this->assertEquals(-20, $root->getLeft()->getValue());
+        $this->assertEquals(-5, $root->getRight()->getValue());
+    }
+
+    public function testInsertHandlesLargeNumberOfValues(): void
+    {
+        $tree = new RedBlackTree();
+        $values = range(1, 1000);
+
+        foreach ($values as $value) {
+            $tree->insert($value);
+        }
+
+        $root = $tree->getRoot();
+
+        $this->assertNotNull($root);
+        $this->assertTrue($this->isBalancedRedBlackTree($root));
+    }
+
     public function testNodeGettersAndSetters(): void
     {
         $parent = new RedBlackNode(10);
