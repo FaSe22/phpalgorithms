@@ -83,7 +83,7 @@ class RedBlackTree
         } while (true);
     }
 
-    private function fixRoot(RedBlackNode $node)
+    private function fixRoot(RedBlackNode $node): void
     {
         $pointer = $node;
         while ($pointer->getParent() != null) {
