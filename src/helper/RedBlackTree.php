@@ -25,24 +25,7 @@ class RedBlackTree
             $this->root->setColor(Color::Black);
             return;
         }
-        $pointer = $this->root;
-        do {
-            if ($value < $pointer->getValue()) {
-                if ($pointer->getLeft() == null) {
-                    $pointer->setLeft(new RedBlackNode($value, $pointer));
-                    $pointer = $pointer->getLeft();
-                    break;
-                }
-                $pointer = $pointer->getLeft();
-            } else {
-                if ($pointer->getRight() == null) {
-                    $pointer->setRight(new RedBlackNode($value, $pointer));
-                    $pointer = $pointer->getRight();
-                    break;
-                }
-                $pointer = $pointer->getRight();
-            }
-        } while (true);
+        $pointer = $this->binaryTreeInsert($this->root, $value);
         do {
             if ($pointer->getColor() == Color::Black) {
                 break;
@@ -81,6 +64,32 @@ class RedBlackTree
                 continue;
             }
             break;
+        } while (true);
+    }
+
+    /**
+     * BinaryTree insert of $value starting at $pointer
+     *
+     * @param RedBlackNode $pointer
+     * @param int $value
+     * @return RedBlackNode
+     */
+    public function binaryTreeInsert(RedBlackNode $pointer, int $value): RedBlackNode
+    {
+        do {
+            if ($value < $pointer->getValue()) {
+                if ($pointer->getLeft() == null) {
+                    $pointer->setLeft(new RedBlackNode($value, $pointer));
+                    return $pointer->getLeft();
+                }
+                $pointer = $pointer->getLeft();
+            } else {
+                if ($pointer->getRight() == null) {
+                    $pointer->setRight(new RedBlackNode($value, $pointer));
+                    return $pointer->getRight();
+                }
+                $pointer = $pointer->getRight();
+            }
         } while (true);
     }
 }
