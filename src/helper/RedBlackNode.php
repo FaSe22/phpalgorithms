@@ -82,7 +82,7 @@ class RedBlackNode
         if (!$this->parent || !$this->parent->getParent()) {
             return null;
         }
-        return $this->parent === $this->parent->getParent()->getLeft()
+        return $this->parent->isLeftChild()
             ? $this->parent->getParent()->getRight()
             : $this->parent->getParent()->getLeft();
     }
@@ -92,7 +92,7 @@ class RedBlackNode
         if (!$this->parent) {
             return null;
         }
-        return $this === $this->parent->getLeft()
+        return $this->isLeftChild()
             ? $this->parent->getRight()
             : $this->parent->getLeft();
     }
@@ -104,7 +104,7 @@ class RedBlackNode
         }
         $parent = $this->parent;
         if ($parent) {
-            if ($parent->getLeft() === $this) {
+            if ($this->isLeftChild()) {
                 $parent->setLeft($this->left);
             } else {
                 $parent->setRight($this->left);
@@ -127,7 +127,7 @@ class RedBlackNode
         }
         $parent = $this->parent;
         if ($parent) {
-            if ($parent->getLeft() === $this) {
+            if ($this->isLeftChild()) {
                 $parent->setLeft($this->right);
             } else {
                 $parent->setRight($this->right);
