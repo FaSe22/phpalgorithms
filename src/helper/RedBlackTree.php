@@ -13,6 +13,11 @@ class RedBlackTree
         return $this->root;
     }
 
+    public function setRoot(RedBlackNode $node)
+    {
+        $this->root = $node;
+    }
+
     public function insert(int $value): void
     {
         if ($this->root == null) {
@@ -49,31 +54,27 @@ class RedBlackTree
                 continue;
             }
             if ($pointer->getParent()->isLeftChild() && $pointer->isLeftChild()) {
-                $pointer->getParent()->getParent()->rotateRight();
-                $this->fixRoot($pointer);
+                $pointer->getParent()->getParent()->rotateRight($this);
                 $pointer->getParent()->setColor(Color::Black);
                 $pointer->sibling()->setColor(Color::Red);
                 continue;
             }
             if ($pointer->getParent()->isLeftChild() && $pointer->isRightChild()) {
-                $pointer->getParent()->rotateLeft();
-                $pointer->getParent()->rotateRight();
-                $this->fixRoot($pointer);
+                $pointer->getParent()->rotateLeft($this);
+                $pointer->getParent()->rotateRight($this);
                 $pointer->setColor(Color::Black);
                 $pointer->getRight()->setColor(Color::Red);
                 continue;
             }
             if ($pointer->getParent()->isRightChild() && $pointer->isRightChild()) {
-                $pointer->getParent()->getParent()->rotateLeft();
-                $this->fixRoot($pointer);
+                $pointer->getParent()->getParent()->rotateLeft($this);
                 $pointer->getParent()->setColor(Color::Black);
                 $pointer->sibling()->setColor(Color::Red);
                 continue;
             }
             if ($pointer->getParent()->isRightChild() && $pointer->isLeftChild()) {
-                $pointer->getParent()->rotateRight();
-                $pointer->getParent()->rotateLeft();
-                $this->fixRoot($pointer);
+                $pointer->getParent()->rotateRight($this);
+                $pointer->getParent()->rotateLeft($this);
                 $pointer->setColor(Color::Black);
                 $pointer->getLeft()->setColor(Color::Red);
                 $pointer->getParent()->setColor(Color::Black);
@@ -81,16 +82,5 @@ class RedBlackTree
             }
             break;
         } while (true);
-    }
-
-    private function fixRoot(RedBlackNode $node): void
-    {
-        $pointer = $node;
-        while ($pointer->getParent() != null) {
-            $pointer = $pointer->getParent();
-        }
-        if ($pointer !== $this->root) {
-            $this->root = $pointer;
-        }
     }
 }
