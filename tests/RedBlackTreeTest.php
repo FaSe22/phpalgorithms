@@ -5,9 +5,36 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use Src\helper\Enum\Color;
 use Src\helper\RedBlackNode;
+use Src\helper\RedBlackTree;
 
 final class RedBlackTreeTest extends TestCase
 {
+    public function testInsert(): void
+    {
+        $tree = new RedBlackTree();
+
+        $tree->insert(10);
+        $root = $tree->getRoot();
+
+        $this->assertNotNull($root);
+        $this->assertEquals(10, $root->getValue());
+        $this->assertEquals(Color::Black, $root->getColor()); // Root must always be black
+
+        $tree->insert(5);
+        $left = $root->getLeft();
+
+        $this->assertNotNull($left);
+        $this->assertEquals(5, $left->getValue());
+        $this->assertEquals(Color::Red, $left->getColor());
+
+        $tree->insert(15);
+        $right = $root->getRight();
+
+        $this->assertNotNull($right);
+        $this->assertEquals(15, $right->getValue());
+        $this->assertEquals(Color::Red, $right->getColor());
+    }
+
     public function testNodeGettersAndSetters(): void
     {
         $parent = new RedBlackNode(10);
