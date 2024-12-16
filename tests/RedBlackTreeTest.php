@@ -251,8 +251,12 @@ final class RedBlackTreeTest extends TestCase
         $right = $node->getRight();
 
         if ($node->getColor() === Color::Red) {
-            $this->assertEquals(Color::Black, $left?->getColor());
-            $this->assertEquals(Color::Black, $right?->getColor());
+            if ($left) {
+                $this->assertEquals(Color::Black, $left->getColor());
+            }
+            if ($right) {
+                $this->assertEquals(Color::Black, $right?->getColor());
+            }
         }
 
         return $this->isBalancedRedBlackTree($left) && $this->isBalancedRedBlackTree($right);
