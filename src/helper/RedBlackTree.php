@@ -48,7 +48,7 @@ class RedBlackTree
                 $pointer = $pointer->getParent()->getParent();
                 continue;
             }
-            if ($pointer->isLeftChild() && $pointer->getParent()->isLeftChild()) {
+            if ($pointer->getParent()->isLeftChild() && $pointer->isLeftChild()) {
                 $pointer->getParent()->getParent()->rotateRight();
                 $this->fixRoot($pointer);
                 $pointer->getParent()->setColor(Color::Black);
@@ -70,7 +70,7 @@ class RedBlackTree
                 $pointer->sibling()->setColor(Color::Red);
                 continue;
             }
-            if ($pointer->getParent()->isRightChild() && $pointer->isRightChild()) {
+            if ($pointer->getParent()->isRightChild() && $pointer->isLeftChild()) {
                 $pointer->getParent()->rotateRight();
                 $pointer->getParent()->rotateLeft();
                 $this->fixRoot($pointer);
