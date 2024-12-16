@@ -24,7 +24,7 @@ class RedBlackNode
         return $this->parent;
     }
 
-    public function setParent(RedBlackNode $node): void
+    public function setParent(?RedBlackNode $node): void
     {
         $this->parent = $node;
     }
@@ -108,6 +108,8 @@ class RedBlackNode
                 $parent->setRight($this->left);
             }
             $this->left->setParent($parent);
+        } else {
+            $this->left->setParent(null);
         }
         $this->parent = $this->left;
         $leftRightGrandchild = $this->parent->getRight();
@@ -129,6 +131,8 @@ class RedBlackNode
                 $parent->setRight($this->right);
             }
             $this->right->setParent($parent);
+        } else {
+            $this->right->setParent(null);
         }
         $this->parent = $this->right;
         $rightLeftGrandchild = $this->parent->getLeft();
