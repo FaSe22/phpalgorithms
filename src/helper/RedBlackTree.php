@@ -13,7 +13,7 @@ class RedBlackTree
         return $this->root;
     }
 
-    public function setRoot(RedBlackNode $node)
+    public function setRoot(RedBlackNode $node): void
     {
         $this->root = $node;
     }
