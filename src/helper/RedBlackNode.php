@@ -7,7 +7,7 @@ use Src\helper\Enum\Color;
 class RedBlackNode
 {
     public function __construct(
-        private int           $value,
+        private readonly int  $value,
         private ?RedBlackNode $parent = null,
         private Color         $color = Color::Red,
         private ?RedBlackNode $left = null,
