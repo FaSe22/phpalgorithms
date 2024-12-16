@@ -121,7 +121,7 @@ final class RedBlackTreeTest extends TestCase
         $leftGrandChild = new RedBlackNode(6, $nodeChildRight);
         $nodeChildRight->setLeft($leftGrandChild);
         $rightGrandChild = new RedBlackNode(8, $nodeChildRight);
-        $nodeChildLeft->setRight($rightGrandChild);
+        $nodeChildRight->setRight($rightGrandChild);
 
         $node->rotateLeft();
 
@@ -135,6 +135,6 @@ final class RedBlackTreeTest extends TestCase
         $this->assertSame($leftGrandChild->getParent(), $node);
 
         $this->assertSame($nodeChildRight->getRight(), $rightGrandChild);
-        $this->assertSame($nodeChildLeft->getParent(), $nodeChildRight);
+        $this->assertSame($rightGrandChild->getParent(), $nodeChildRight);
     }
 }
