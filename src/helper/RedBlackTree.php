@@ -64,7 +64,7 @@ class RedBlackTree
                 continue;
             }
             break;
-        } while (true);
+        } while ($pointer);
     }
 
     /**
