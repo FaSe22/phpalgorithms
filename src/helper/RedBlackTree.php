@@ -76,17 +76,20 @@ class RedBlackTree
      */
     public function binaryTreeInsert(RedBlackNode $pointer, int $value): RedBlackNode
     {
+        $node = new RedBlackNode($value);
         do {
             if ($value < $pointer->getValue()) {
                 if ($pointer->getLeft() == null) {
-                    $pointer->setLeft(new RedBlackNode($value, $pointer));
-                    return $pointer->getLeft();
+                    $pointer->setLeft($node);
+                    $node->setParent($pointer);
+                    return $node;
                 }
                 $pointer = $pointer->getLeft();
             } else {
                 if ($pointer->getRight() == null) {
-                    $pointer->setRight(new RedBlackNode($value, $pointer));
-                    return $pointer->getRight();
+                    $pointer->setRight($node);
+                    $node->setParent($pointer);
+                    return $node;
                 }
                 $pointer = $pointer->getRight();
             }
