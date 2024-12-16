@@ -109,7 +109,6 @@ class RedBlackNode
             } else {
                 $parent->setRight($this->left);
             }
-            $this->left->setParent($parent);
         } else {
             $this->left->setParent(null);
             $tree->setRoot($this->left);
@@ -133,7 +132,6 @@ class RedBlackNode
             } else {
                 $parent->setRight($this->right);
             }
-            $this->right->setParent($parent);
         } else {
             $this->right->setParent(null);
             $tree->setRoot($this->right);
