@@ -44,10 +44,10 @@ class RedBlackNode
         return $this->left;
     }
 
-    public function setLeft(RedBlackNode $node): void
+    public function setLeft(?RedBlackNode $node): void
     {
         $this->left = $node;
-        $node->setParent($this);
+        $node?->setParent($this);
     }
 
     public function getRight(): ?RedBlackNode
@@ -55,10 +55,10 @@ class RedBlackNode
         return $this->right;
     }
 
-    public function setRight(RedBlackNode $node): void
+    public function setRight(?RedBlackNode $node): void
     {
         $this->right = $node;
-        $node->setParent($this);
+        $node?->setParent($this);
     }
 
     public function isLeftChild(): bool
