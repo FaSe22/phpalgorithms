@@ -210,4 +210,21 @@ final class RedBlackTreeTest extends TestCase
         $this->assertSame($nodeChildRight->getRight(), $rightGrandChild);
         $this->assertSame($rightGrandChild->getParent(), $nodeChildRight);
     }
+
+    private function isBalancedRedBlackTree(?RedBlackNode $node): bool
+    {
+        if ($node === null) {
+            return true;
+        }
+
+        $left = $node->getLeft();
+        $right = $node->getRight();
+
+        if ($node->getColor() === Color::Red) {
+            $this->assertEquals(Color::Black, $left?->getColor());
+            $this->assertEquals(Color::Black, $right?->getColor());
+        }
+
+        return $this->isBalancedRedBlackTree($left) && $this->isBalancedRedBlackTree($right);
+    }
 }
