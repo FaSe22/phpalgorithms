@@ -123,11 +123,14 @@ class RedBlackTree
      */
     private function binaryTreeDelete(RedBlackNode $node): void
     {
+        if ($node === $this->root) {
+            $this->root = null;
+            return;
+        }
+        $parentChildDirection = $node->getParent()->isChild(Direction::Left)
+            ? Direction::Left
+            : Direction::Right;
         if (!$node->getRight() && !$node->getLeft()) {
-            if ($node === $this->root) {
-                $this->root = null;
-                return;
-            }
             if ($node->getParent()->isChild(Direction::Left)) {
                 $node->getParent()->setLeft(null);
                 return;
