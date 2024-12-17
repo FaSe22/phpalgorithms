@@ -3,6 +3,7 @@
 namespace Src\helper;
 
 use Src\helper\Enum\Color;
+use Src\helper\Enum\Direction;
 
 class RedBlackTree
 {
@@ -36,26 +37,26 @@ class RedBlackTree
                 $pointer = $pointer->getParent()->getParent();
                 continue;
             }
-            if ($pointer->getParent()->isLeftChild() && $pointer->isLeftChild()) {
+            if ($pointer->getParent()->isChild(Direction::Left) && $pointer->isChild(Direction::Left)) {
                 $pointer->getParent()->getParent()->rotateRight($this);
                 $pointer->getParent()->setColor(Color::Black);
                 $pointer->sibling()->setColor(Color::Red);
                 continue;
             }
-            if ($pointer->getParent()->isLeftChild() && $pointer->isRightChild()) {
+            if ($pointer->getParent()->isChild(Direction::Left) && $pointer->isChild(Direction::Right)) {
                 $pointer->getParent()->rotateLeft($this);
                 $pointer->getParent()->rotateRight($this);
                 $pointer->setColor(Color::Black);
                 $pointer->getRight()->setColor(Color::Red);
                 continue;
             }
-            if ($pointer->getParent()->isRightChild() && $pointer->isRightChild()) {
+            if ($pointer->getParent()->isChild(Direction::Right) && $pointer->isChild(Direction::Right)) {
                 $pointer->getParent()->getParent()->rotateLeft($this);
                 $pointer->getParent()->setColor(Color::Black);
                 $pointer->sibling()->setColor(Color::Red);
                 continue;
             }
-            if ($pointer->getParent()->isRightChild() && $pointer->isLeftChild()) {
+            if ($pointer->getParent()->isChild(Direction::Right) && $pointer->isChild(Direction::Left)) {
                 $pointer->getParent()->rotateRight($this);
                 $pointer->getParent()->rotateLeft($this);
                 $pointer->setColor(Color::Black);

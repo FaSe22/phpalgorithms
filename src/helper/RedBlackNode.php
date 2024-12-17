@@ -72,28 +72,12 @@ class RedBlackNode
         return false;
     }
 
-    public function isLeftChild(): bool
-    {
-        if ($this->parent && $this->parent->getLeft() === $this) {
-            return true;
-        }
-        return false;
-    }
-
-    public function isRightChild(): bool
-    {
-        if ($this->parent && $this->parent->getRight() === $this) {
-            return true;
-        }
-        return false;
-    }
-
     public function uncle(): ?RedBlackNode
     {
         if (!$this->parent || !$this->parent->getParent()) {
             return null;
         }
-        return $this->parent->isLeftChild()
+        return $this->parent->isChild(Direction::Left)
             ? $this->parent->getParent()->getRight()
             : $this->parent->getParent()->getLeft();
     }
@@ -103,7 +87,7 @@ class RedBlackNode
         if (!$this->parent) {
             return null;
         }
-        return $this->isLeftChild()
+        return $this->isChild(Direction::Left)
             ? $this->parent->getRight()
             : $this->parent->getLeft();
     }

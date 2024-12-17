@@ -147,24 +147,6 @@ final class RedBlackTreeTest extends TestCase
         $this->assertTrue($child->isChild(Direction::Right));
     }
 
-    public function testIsLeftChild(): void
-    {
-        $parent = new RedBlackNode(10);
-        $child = new RedBlackNode(5, $parent);
-        $parent->setLeft($child);
-
-        $this->assertTrue($child->isLeftChild());
-    }
-
-    public function testIsRightChild(): void
-    {
-        $parent = new RedBlackNode(10);
-        $child = new RedBlackNode(15, $parent);
-        $parent->setRight($child);
-
-        $this->assertTrue($child->isRightChild());
-    }
-
     public function testUncle(): void
     {
         $grandparent = new RedBlackNode(20);
