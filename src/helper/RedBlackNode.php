@@ -103,28 +103,6 @@ class RedBlackNode
         $this->{$direction->opposite()->operation('set')}($grandchild);
     }
 
-    public function rotateRight(RedBlackTree $tree): void
-    {
-        if (!$this->left) {
-            return;
-        }
-        $leftRightGrandchild = $this->left->getRight();
-        $this->updateParent($tree, Direction::Left);
-        $this->left->setRight($this);
-        $this->setLeft($leftRightGrandchild);
-    }
-
-    public function rotateLeft(RedBlackTree $tree): void
-    {
-        if (!$this->right) {
-            return;
-        }
-        $rightLeftGrandchild = $this->right->getLeft();
-        $this->updateParent($tree, Direction::Right);
-        $this->right->setLeft($this);
-        $this->setRight($rightLeftGrandchild);
-    }
-
     /**
      * Update the parent of the node to the child in the $direction
      * should $this be root (both child check null), update parent to null and set child in $direction as new root

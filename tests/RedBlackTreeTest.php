@@ -174,38 +174,6 @@ final class RedBlackTreeTest extends TestCase
         $this->assertEquals($left, $right->sibling());
     }
 
-    public function testRotateRight(): void
-    {
-        $grandparent = new RedBlackNode(10);
-        $redBlackTree = new RedBlackTree($grandparent);
-        $node = new RedBlackNode(5, $grandparent);
-        $grandparent->setLeft($node);
-
-        $nodeChildLeft = new RedBlackNode(3, $node);
-        $node->setLeft($nodeChildLeft);
-        $nodeChildRight = new RedBlackNode(7, $node);
-        $node->setRight($nodeChildRight);
-
-        $leftGrandChild = new RedBlackNode(1, $nodeChildLeft);
-        $nodeChildLeft->setLeft($leftGrandChild);
-        $rightGrandChild = new RedBlackNode(4, $nodeChildLeft);
-        $nodeChildLeft->setRight($rightGrandChild);
-
-        $node->rotateRight($redBlackTree);
-
-        $this->assertSame($grandparent->getLeft(), $nodeChildLeft);
-        $this->assertSame($nodeChildLeft->getParent(), $grandparent);
-
-        $this->assertSame($node->getParent(), $nodeChildLeft);
-        $this->assertSame($nodeChildLeft->getRight(), $node);
-
-        $this->assertSame($node->getLeft(), $rightGrandChild);
-        $this->assertSame($rightGrandChild->getParent(), $node);
-
-        $this->assertSame($node->getRight(), $nodeChildRight);
-        $this->assertSame($nodeChildRight->getParent(), $node);
-    }
-
     public function testRotateWithRight(): void
     {
         $grandparent = new RedBlackNode(10);
@@ -236,38 +204,6 @@ final class RedBlackTreeTest extends TestCase
 
         $this->assertSame($node->getRight(), $nodeChildRight);
         $this->assertSame($nodeChildRight->getParent(), $node);
-    }
-
-    public function testRotateLeft(): void
-    {
-        $grandparent = new RedBlackNode(10);
-        $redBlackTree = new RedBlackTree($grandparent);
-        $node = new RedBlackNode(5, $grandparent);
-        $grandparent->setLeft($node);
-
-        $nodeChildLeft = new RedBlackNode(3, $node);
-        $node->setLeft($nodeChildLeft);
-        $nodeChildRight = new RedBlackNode(7, $node);
-        $node->setRight($nodeChildRight);
-
-        $leftGrandChild = new RedBlackNode(6, $nodeChildRight);
-        $nodeChildRight->setLeft($leftGrandChild);
-        $rightGrandChild = new RedBlackNode(8, $nodeChildRight);
-        $nodeChildRight->setRight($rightGrandChild);
-
-        $node->rotateLeft($redBlackTree);
-
-        $this->assertSame($grandparent->getLeft(), $nodeChildRight);
-        $this->assertSame($nodeChildRight->getParent(), $grandparent);
-
-        $this->assertSame($nodeChildRight->getLeft(), $node);
-        $this->assertSame($node->getParent(), $nodeChildRight);
-
-        $this->assertSame($node->getRight(), $leftGrandChild);
-        $this->assertSame($leftGrandChild->getParent(), $node);
-
-        $this->assertSame($nodeChildRight->getRight(), $rightGrandChild);
-        $this->assertSame($rightGrandChild->getParent(), $nodeChildRight);
     }
 
     public function testRotateWithLeft(): void

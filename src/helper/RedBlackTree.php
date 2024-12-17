@@ -38,27 +38,27 @@ class RedBlackTree
                 continue;
             }
             if ($pointer->getParent()->isChild(Direction::Left) && $pointer->isChild(Direction::Left)) {
-                $pointer->getParent()->getParent()->rotateRight($this);
+                $pointer->getParent()->getParent()->rotate($this, Direction::Right);
                 $pointer->getParent()->setColor(Color::Black);
                 $pointer->sibling()->setColor(Color::Red);
                 continue;
             }
             if ($pointer->getParent()->isChild(Direction::Left) && $pointer->isChild(Direction::Right)) {
-                $pointer->getParent()->rotateLeft($this);
-                $pointer->getParent()->rotateRight($this);
+                $pointer->getParent()->rotate($this, Direction::Left);
+                $pointer->getParent()->rotate($this, Direction::Right);
                 $pointer->setColor(Color::Black);
                 $pointer->getRight()->setColor(Color::Red);
                 continue;
             }
             if ($pointer->getParent()->isChild(Direction::Right) && $pointer->isChild(Direction::Right)) {
-                $pointer->getParent()->getParent()->rotateLeft($this);
+                $pointer->getParent()->getParent()->rotate($this, Direction::Left);
                 $pointer->getParent()->setColor(Color::Black);
                 $pointer->sibling()->setColor(Color::Red);
                 continue;
             }
             if ($pointer->getParent()->isChild(Direction::Right) && $pointer->isChild(Direction::Left)) {
-                $pointer->getParent()->rotateRight($this);
-                $pointer->getParent()->rotateLeft($this);
+                $pointer->getParent()->rotate($this, Direction::Right);
+                $pointer->getParent()->rotate($this, Direction::Left);
                 $pointer->setColor(Color::Black);
                 $pointer->getLeft()->setColor(Color::Red);
                 $pointer->getParent()->setColor(Color::Black);
