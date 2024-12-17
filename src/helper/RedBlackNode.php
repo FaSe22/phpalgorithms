@@ -77,9 +77,7 @@ class RedBlackNode
         if (!$this->parent || !$this->parent->getParent()) {
             return null;
         }
-        return $this->parent->isChild(Direction::Left)
-            ? $this->parent->getParent()->getRight()
-            : $this->parent->getParent()->getLeft();
+        return $this->parent->sibling();
     }
 
     public function sibling(): ?RedBlackNode
