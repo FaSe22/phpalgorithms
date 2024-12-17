@@ -7,6 +7,9 @@ use Src\helper\Enum\Direction;
 
 class RedBlackTree
 {
+    /**
+     * @param RedBlackNode|null $root
+     */
     public function __construct(private ?RedBlackNode $root = null) {}
 
     public function getRoot(): ?RedBlackNode
@@ -19,6 +22,12 @@ class RedBlackTree
         $this->root = $node;
     }
 
+    /**
+     * Inserts a new node with provided $value into the tree
+     *
+     * @param int $value
+     * @return void
+     */
     public function insert(int $value): void
     {
         if ($this->root == null) {

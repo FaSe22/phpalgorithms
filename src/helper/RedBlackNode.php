@@ -7,6 +7,13 @@ use Src\helper\Enum\Direction;
 
 class RedBlackNode
 {
+    /**
+     * @param int $value
+     * @param RedBlackNode|null $parent
+     * @param Color $color
+     * @param RedBlackNode|null $left
+     * @param RedBlackNode|null $right
+     */
     public function __construct(
         private readonly int  $value,
         private ?RedBlackNode $parent = null,
@@ -62,6 +69,12 @@ class RedBlackNode
         $node?->setParent($this);
     }
 
+    /**
+     * Check if $this node is the child of its parents in $direction
+     *
+     * @param Direction $direction
+     * @return bool
+     */
     public function isChild(Direction $direction): bool
     {
         if (!$this->parent) {
@@ -72,6 +85,11 @@ class RedBlackNode
         return false;
     }
 
+    /**
+     * Returns the sibling of the parent of $this
+     *
+     * @return RedBlackNode|null
+     */
     public function uncle(): ?RedBlackNode
     {
         if (!$this->parent || !$this->parent->getParent()) {
@@ -80,6 +98,11 @@ class RedBlackNode
         return $this->parent->sibling();
     }
 
+    /**
+     * Return the opposite child of the parents to $this
+     *
+     * @return RedBlackNode|null
+     */
     public function sibling(): ?RedBlackNode
     {
         if (!$this->parent) {
@@ -90,6 +113,13 @@ class RedBlackNode
             : $this->parent->getLeft();
     }
 
+    /**
+     * Rotate the subtree around $this in the $direction and updates relations
+     *
+     * @param RedBlackTree $tree
+     * @param Direction $direction
+     * @return void
+     */
     public function rotate(RedBlackTree $tree, Direction $direction): void
     {
         if (!$this->{$direction->opposite()->value}) {
@@ -103,7 +133,7 @@ class RedBlackNode
 
     /**
      * Update the parent of the node to the child in the $direction
-     * should $this be root (both child check null), update parent to null and set child in $direction as new root
+     * should $this be root (both children checks null), update parent to null and set child in $direction as new root
      *
      * @param RedBlackTree $tree
      * @param Direction $direction
