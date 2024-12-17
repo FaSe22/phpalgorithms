@@ -9,6 +9,6 @@ enum Direction: string
 
     public function operation(string $operationName): string
     {
-        return $operationName . ucfirst($this->value);
+        return $operationName . $this->name;
     }
 }
