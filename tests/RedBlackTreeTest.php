@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Src\helper\Enum\Color;
+use Src\helper\Enum\Direction;
 use Src\helper\RedBlackNode;
 use Src\helper\RedBlackTree;
 
@@ -133,6 +134,18 @@ final class RedBlackTreeTest extends TestCase
         $this->assertSame($left, $node->getParent());
     }
 
+    public function testIsChild(): void
+    {
+        $parent = new RedBlackNode(10);
+        $child = new RedBlackNode(5, $parent);
+        $parent->setLeft($child);
+        $this->assertTrue($child->isChild(Direction::Left));
+
+        $parent = new RedBlackNode(10);
+        $child = new RedBlackNode(15, $parent);
+        $parent->setRight($child);
+        $this->assertTrue($child->isChild(Direction::Right));
+    }
 
     public function testIsLeftChild(): void
     {

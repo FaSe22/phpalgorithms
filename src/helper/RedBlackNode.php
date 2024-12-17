@@ -3,6 +3,7 @@
 namespace Src\helper;
 
 use Src\helper\Enum\Color;
+use Src\helper\Enum\Direction;
 
 class RedBlackNode
 {
@@ -59,6 +60,16 @@ class RedBlackNode
     {
         $this->right = $node;
         $node?->setParent($this);
+    }
+
+    public function isChild(Direction $direction): bool
+    {
+        if (!$this->parent) {
+            return false;
+        } elseif ($this->parent->{$direction->operation('get')}() === $this) {
+            return true;
+        }
+        return false;
     }
 
     public function isLeftChild(): bool
