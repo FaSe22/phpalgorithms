@@ -85,7 +85,7 @@ class RedBlackTree
      */
     public function delete(RedBlackNode $node): void
     {
-
+        $this->binaryTreeDelete($node);
     }
 
     /**
@@ -113,5 +113,43 @@ class RedBlackTree
                 $pointer = $pointer->getRight();
             }
         } while (true);
+    }
+
+    /**
+     * BinaryTree deletion of $node
+     *
+     * @param RedBlackNode $node
+     * @return void
+     */
+    private function binaryTreeDelete(RedBlackNode $node): void
+    {
+        if (!$node->getRight() && !$node->getLeft()) {
+            if ($node === $this->root) {
+                $this->root = null;
+                return;
+            }
+            if ($node->getParent()->isChild(Direction::Left)) {
+                $node->getParent()->setLeft(null);
+                return;
+            }
+            $node->getParent()->setRight(null);
+            return;
+        }
+        if ($node->getLeft() && !$node->getRight()) {
+            if ($node->getParent()->isChild(Direction::Left)) {
+                $node->getParent()->setLeft($node->getLeft());
+                return;
+            }
+            $node->getParent()->setRight($node->getLeft());
+            return;
+        }
+        if ($node->getRight() && !$node->getLeft()) {
+            if ($node->getParent()->isChild(Direction::Left)) {
+                $node->getParent()->setLeft($node->getRight());
+                return;
+            }
+            $node->getParent()->setRight($node->getRight());
+            return;
+        }
     }
 }
