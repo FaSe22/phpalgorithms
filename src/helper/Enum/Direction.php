@@ -11,4 +11,12 @@ enum Direction: string
     {
         return $operationName . $this->name;
     }
+
+    public function opposite(): Direction
+    {
+        return match ($this) {
+            Direction::Left => Direction::Right,
+            Direction::Right => Direction::Left,
+        };
+    }
 }
