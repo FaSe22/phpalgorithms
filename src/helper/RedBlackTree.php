@@ -133,7 +133,6 @@ class RedBlackTree
                 return;
             }
             $node->getParent()->setRight(null);
-            return;
         }
         if ($node->getLeft() && $node->getRight()) {
             $pointer = $node->getRight();
@@ -150,7 +149,6 @@ class RedBlackTree
                 return;
             }
             $node->getParent()->setRight($pointer);
-            return;
         }
         if ($node->getLeft() && !$node->getRight()) {
             if ($node->getParent()->isChild(Direction::Left)) {
@@ -158,7 +156,6 @@ class RedBlackTree
                 return;
             }
             $node->getParent()->setRight($node->getLeft());
-            return;
         }
         if ($node->getRight() && !$node->getLeft()) {
             if ($node->getParent()->isChild(Direction::Left)) {
@@ -166,7 +163,6 @@ class RedBlackTree
                 return;
             }
             $node->getParent()->setRight($node->getRight());
-            return;
         }
     }
 }
