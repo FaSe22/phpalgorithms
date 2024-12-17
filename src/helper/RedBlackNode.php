@@ -92,6 +92,17 @@ class RedBlackNode
             : $this->parent->getLeft();
     }
 
+    public function rotate(RedBlackTree $tree, Direction $direction): void
+    {
+        if (!$this->{$direction->opposite()->value}) {
+            return;
+        }
+        $grandchild = $this->{$direction->opposite()->value}->{$direction->operation('get')}();
+        $this->updateParent($tree, $direction->opposite());
+        $this->{$direction->opposite()->value}->{$direction->operation('set')}($this);
+        $this->{$direction->opposite()->operation('set')}($grandchild);
+    }
+
     public function rotateRight(RedBlackTree $tree): void
     {
         if (!$this->left) {
