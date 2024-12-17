@@ -114,7 +114,7 @@ class RedBlackNode
             return;
         }
         $leftRightGrandchild = $this->left->getRight();
-        $this->updateParent($tree, 'left');
+        $this->updateParent($tree, Direction::Left);
         $this->left->setRight($this);
         $this->setLeft($leftRightGrandchild);
     }
@@ -125,7 +125,7 @@ class RedBlackNode
             return;
         }
         $rightLeftGrandchild = $this->right->getLeft();
-        $this->updateParent($tree, 'right');
+        $this->updateParent($tree, Direction::Right);
         $this->right->setLeft($this);
         $this->setRight($rightLeftGrandchild);
     }
@@ -135,18 +135,18 @@ class RedBlackNode
      * should $this be root (both child check null), update parent to null and set child in $direction as new root
      *
      * @param RedBlackTree $tree
-     * @param string $direction left|right
+     * @param Direction $direction
      * @return void
      */
-    private function updateParent(RedBlackTree $tree, string $direction): void
+    private function updateParent(RedBlackTree $tree, Direction $direction): void
     {
-        if ($this->isLeftChild()) {
-            $this->parent->setLeft($this->$direction);
-        } elseif ($this->isRightChild()) {
-            $this->parent->setRight($this->$direction);
+        if ($this->isChild(Direction::Left)) {
+            $this->parent->setLeft($this->{$direction->value});
+        } elseif ($this->isChild(Direction::Right)) {
+            $this->parent->setRight($this->{$direction->value});
         } else {
-            $this->$direction->setParent(null);
-            $tree->setRoot($this->$direction);
+            $this->{$direction->value}->setParent(null);
+            $tree->setRoot($this->{$direction->value});
         }
     }
 }
