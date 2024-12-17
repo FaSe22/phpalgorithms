@@ -84,7 +84,7 @@ class RedBlackTree
      * @param int $value
      * @return RedBlackNode
      */
-    public function binaryTreeInsert(RedBlackNode $pointer, int $value): RedBlackNode
+    private function binaryTreeInsert(RedBlackNode $pointer, int $value): RedBlackNode
     {
         $node = new RedBlackNode($value);
         do {
