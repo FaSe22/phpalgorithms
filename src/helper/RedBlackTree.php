@@ -135,6 +135,23 @@ class RedBlackTree
             $node->getParent()->setRight(null);
             return;
         }
+        if ($node->getLeft() && $node->getRight()) {
+            $pointer = $node->getRight();
+            while ($pointer->getLeft()) {
+                $pointer = $pointer->getLeft();
+            }
+            if ($pointer->getParent()->isChild(Direction::Left)) {
+                $pointer->getParent()->setLeft(null);
+            } else {
+                $pointer->getParent()->setRight(null);
+            }
+            if ($node->getParent()->isChild(Direction::Left)) {
+                $node->getParent()->setLeft($pointer);
+                return;
+            }
+            $node->getParent()->setRight($pointer);
+            return;
+        }
         if ($node->getLeft() && !$node->getRight()) {
             if ($node->getParent()->isChild(Direction::Left)) {
                 $node->getParent()->setLeft($node->getLeft());
