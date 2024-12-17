@@ -131,11 +131,7 @@ class RedBlackTree
             ? Direction::Left
             : Direction::Right;
         if (!$node->getRight() && !$node->getLeft()) {
-            if ($node->getParent()->isChild(Direction::Left)) {
-                $node->getParent()->setLeft(null);
-                return;
-            }
-            $node->getParent()->setRight(null);
+            $node->getParent()->{$parentChildDirection->operation('set')}(null);
         }
         if ($node->getLeft() && $node->getRight()) {
             $pointer = $node->getRight();
@@ -147,25 +143,13 @@ class RedBlackTree
             } else {
                 $pointer->getParent()->setRight(null);
             }
-            if ($node->getParent()->isChild(Direction::Left)) {
-                $node->getParent()->setLeft($pointer);
-                return;
-            }
-            $node->getParent()->setRight($pointer);
+            $node->getParent()->{$parentChildDirection->operation('set')}($pointer);
         }
         if ($node->getLeft() && !$node->getRight()) {
-            if ($node->getParent()->isChild(Direction::Left)) {
-                $node->getParent()->setLeft($node->getLeft());
-                return;
-            }
-            $node->getParent()->setRight($node->getLeft());
+            $node->getParent()->{$parentChildDirection->operation('set')}($node->getLeft());
         }
         if ($node->getRight() && !$node->getLeft()) {
-            if ($node->getParent()->isChild(Direction::Left)) {
-                $node->getParent()->setLeft($node->getRight());
-                return;
-            }
-            $node->getParent()->setRight($node->getRight());
+            $node->getParent()->{$parentChildDirection->operation('set')}($node->getRight());
         }
     }
 }
