@@ -78,6 +78,17 @@ class RedBlackTree
     }
 
     /**
+     * Delete the provided node from the tree
+     *
+     * @param RedBlackNode $node
+     * @return void
+     */
+    public function delete(RedBlackNode $node): void
+    {
+
+    }
+
+    /**
      * BinaryTree insert of $value starting at $pointer
      *
      * @param RedBlackNode $pointer
