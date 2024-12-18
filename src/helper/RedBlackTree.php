@@ -127,7 +127,7 @@ class RedBlackTree
             $this->root = null;
             return;
         }
-        $parentChildDirection = $node->getParent()->isChild(Direction::Left)
+        $parentChildDirection = $node->isChild(Direction::Left)
             ? Direction::Left
             : Direction::Right;
         if (!$node->getRight() && !$node->getLeft()) {
