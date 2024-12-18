@@ -238,6 +238,45 @@ final class RedBlackTreeTest extends TestCase
         $this->assertSame($rightGrandChild->getParent(), $nodeChildRight);
     }
 
+    public function testDeleteRootNode(): void
+    {
+        $tree = new RedBlackTree();
+
+        $tree->insert(10);
+
+        $tree->delete($tree->getRoot());
+
+        $this->assertNull($tree->getRoot());
+    }
+
+    public function testDeleteLeftLeafNode(): void
+    {
+        $tree = new RedBlackTree();
+
+        $tree->insert(10);
+        $tree->insert(5);
+        $tree->insert(15);
+
+        $leafNode = $tree->getRoot()->getLeft();
+        $tree->delete($leafNode);
+
+        $this->assertNull($tree->getRoot()->getLeft());
+    }
+
+    public function testDeleteRightLeafNode(): void
+    {
+        $tree = new RedBlackTree();
+
+        $tree->insert(10);
+        $tree->insert(5);
+        $tree->insert(15);
+
+        $leafNode = $tree->getRoot()->getRight();
+        $tree->delete($leafNode);
+
+        $this->assertNull($tree->getRoot()->getRight());
+    }
+
     private function isBalancedRedBlackTree(?RedBlackNode $node): bool
     {
         if ($node === null) {
