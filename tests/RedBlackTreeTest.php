@@ -263,6 +263,38 @@ final class RedBlackTreeTest extends TestCase
         $this->assertNull($tree->getRoot()->getLeft());
     }
 
+    public function testDeleteNodeWithOneChild(): void
+    {
+        $tree = new RedBlackTree();
+
+        $tree->insert(10);
+        $tree->insert(15);
+        $tree->insert(5);
+        $tree->insert(2);
+
+        $nodeWithOneChild = $tree->getRoot()->getLeft();
+        $tree->delete($nodeWithOneChild);
+
+        $this->assertEquals(2, $tree->getRoot()->getLeft()->getValue());
+    }
+
+    public function testDeleteNodeWithTwoChildren(): void
+    {
+        $tree = new RedBlackTree();
+        $tree->insert(4);
+        $tree->insert(2);
+        $tree->insert(6);
+        $tree->insert(1);
+        $tree->insert(3);
+        $tree->insert(5);
+        $tree->insert(7);
+
+        $nodeWithTwoChildren = $tree->getRoot()->getLeft();
+        $tree->delete($nodeWithTwoChildren);
+        $this->assertEquals(1, $tree->getRoot()->getLeft()->getValue());
+        $this->assertNull($tree->getRoot()->getLeft()->getLeft());
+    }
+
     public function testDeleteRightLeafNode(): void
     {
         $tree = new RedBlackTree();
