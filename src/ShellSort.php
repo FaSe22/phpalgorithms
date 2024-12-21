@@ -14,12 +14,11 @@ class ShellSort
         $stepSequence = $length;
         do {
             $stepSequence = self::stepSequence($stepSequence);
-            $columns = (int)($length / $stepSequence);
-            for ($i = 0; $i < $columns; $i++) {
+            for ($i = 0; $i < $stepSequence; $i++) {
                 for ($j = $i+$stepSequence; $j < $length; $j += $stepSequence) {
-                    for ($k = $j-$stepSequence; $k >= $i; $k -= $stepSequence) {
-                        if ($arr[$j] < $arr[$k]) {
-                            [$arr[$j], $arr[$k]] = [$arr[$k], $arr[$j]];
+                    for ($k = $j; $k >= $stepSequence; $k -= $stepSequence) {
+                        if ($arr[$k - $stepSequence] > $arr[$k]) {
+                            [$arr[$k], $arr[$k - $stepSequence]] = [$arr[$k - $stepSequence], $arr[$k]];
                         }
                     }
                 }
