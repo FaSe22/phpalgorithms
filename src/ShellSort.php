@@ -14,6 +14,7 @@ class ShellSort
         $stepSequence = $length;
         $columns = (int)($length / $stepSequence);
         do {
+            $stepSequence = self::stepSequence($stepSequence);
             for ($i = 0; $i < $columns; $i++) {
                 for ($j = $i+$stepSequence; $j < $length; $j += $stepSequence) {
                     for ($k = $j-$stepSequence; $k >= $i; $k -= $stepSequence) {
