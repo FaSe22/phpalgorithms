@@ -17,7 +17,13 @@ class ShellSort
             $columns = (int)$length / $stepSequence;
             for ($i = 0; $i < $columns; $i++) {
                 for ($j = $i + $stepSequence; $j<$length; $j += $stepSequence) {
-                    // basic insertion sort
+                    for ($k = $j - $stepSequence; $k >= $i; $k -= $stepSequence) {
+                        if ($arr[$j] < $arr[$k]) {
+                            $safe = $arr[$k];
+                            $arr[$k] = $arr[$j];
+                            $arr[$j] = $safe;
+                        }
+                    }
                 }
             }
         } while ($stepSequence > 1);
