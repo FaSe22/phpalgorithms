@@ -15,6 +15,13 @@ class ShellSort
         $columns = (int)($length / $stepSequence);
         do {
             for ($i = 0; $i < $columns; $i++) {
+                for ($j = $i+$stepSequence; $j < $length; $j += $stepSequence) {
+                    for ($k = $j-$stepSequence; $k >= $i; $k -= $stepSequence) {
+                        if ($arr[$j] < $arr[$k]) {
+                            [$arr[$j], $arr[$k]] = [$arr[$k], $arr[$j]];
+                        }
+                    }
+                }
             }
         } while ($stepSequence > 1);
         return $arr;
