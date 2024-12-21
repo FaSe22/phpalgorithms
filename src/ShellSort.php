@@ -13,16 +13,6 @@ class ShellSort
         $length = count($arr);
         $stepSequence = $length;
         do {
-            $stepSequence = self::stepSequence($stepSequence);
-            for ($i = 0; $i < $length; $i++) {
-                for ($j = $i - $stepSequence; $j >= 0; $j -= $stepSequence) {
-                    if ($arr[$j] > $arr[$i]) {
-                        $safe = $arr[$j];
-                        $arr[$j] = $arr[$i];
-                        $arr[$i] = $safe;
-                    }
-                }
-            }
         } while ($stepSequence > 1);
         return $arr;
     }
