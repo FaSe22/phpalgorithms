@@ -12,4 +12,19 @@ class ShellSort
     {
         return $arr;
     }
+
+    /**
+     * Returns the next step sequence based on the current lenght/step
+     *
+     * @param int $start current step sequence or array length
+     * @return int next lower step sequence
+     */
+    private function stepSequence(int $start): int
+    {
+        $next = 1;
+        while ($start > $new = ($next + 1) * 3) {
+            $next = $new;
+        }
+        return $next;
+    }
 }
