@@ -12,7 +12,10 @@ class ShellSort
     {
         $length = count($arr);
         $stepSequence = $length;
+        $columns = (int)($length / $stepSequence);
         do {
+            for ($i = 0; $i < $columns; $i++) {
+            }
         } while ($stepSequence > 1);
         return $arr;
     }
