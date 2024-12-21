@@ -10,6 +10,17 @@ class ShellSort
      */
     public static function sort(array $arr): array
     {
+        $length = count($arr);
+        $stepSequence = self::stepSequence($length);
+        do {
+            $stepSequence = self::stepSequence($stepSequence);
+            $columns = (int)$length / $stepSequence;
+            for ($i = 0; $i < $columns; $i++) {
+                for ($j = $i + $stepSequence; $j<$length; $j += $stepSequence) {
+                    // basic insertion sort
+                }
+            }
+        } while ($stepSequence > 1);
         return $arr;
     }
 
