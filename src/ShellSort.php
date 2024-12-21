@@ -11,7 +11,7 @@ class ShellSort
     public static function sort(array $arr): array
     {
         $length = count($arr);
-        $stepSequence = self::stepSequence($length);
+        $stepSequence = $length;
         do {
             $stepSequence = self::stepSequence($stepSequence);
             $columns = (int)$length / $stepSequence;
