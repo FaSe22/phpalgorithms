@@ -36,4 +36,21 @@ class ArrayHelper
     {
         return count($array) == count(array_filter($array, 'is_int'));
     }
+
+    /**
+     * Checks the array is sorted
+     *
+     * @param array<int, mixed> $array
+     * @return bool
+     */
+    public static function isSorted(array $array): bool
+    {
+        $length = count($array);
+        for ($i = 0; $i < $length - 1; $i++) {
+            if ($array[$i] > $array[$i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
