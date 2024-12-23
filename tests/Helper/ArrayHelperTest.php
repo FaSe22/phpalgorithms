@@ -32,6 +32,13 @@ final class ArrayHelperTest extends TestCase
         $this->assertEquals($expected, ArrayHelper::consistsOfInt($array));
     }
 
+    #[Test]
+    #[DataProvider('isSortedProvider')]
+    public function it_should_check_if_array_is_sorted(array $array, bool $expected): void
+    {
+        $this->assertEquals($expected, ArrayHelper::isSorted($array));
+    }
+
     /**
      * Provides data for min and max tests
      *
@@ -61,6 +68,24 @@ final class ArrayHelperTest extends TestCase
             [[1, 2, '3', 4], false],
             [[], true],
             [[100, -200, 0], true],
+        ];
+    }
+
+    /**
+     * Provides data for isSorted tests
+     *
+     * @return array<int, array<int, mixed>>
+     */
+    public static function isSortedProvider(): array
+    {
+        return [
+            [[1, 2, 3, 4, 5], true],   // Sorted ascending
+            [[5, 4, 3, 2, 1], false], // Descending
+            [[1, 1, 1, 1], true],     // All equal
+            [[], true],               // Empty array
+            [[10], true],             // Single element
+            [[1, 2, 2, 3, 4], true],  // Contains duplicates, sorted
+            [[1, 3, 2, 4], false],    // Unsorted
         ];
     }
 }
