@@ -22,6 +22,12 @@ class Countingsort
         for ($i = $minElement; $i <= $maxElement; $i++) {
             $helperArray[$i] = 0;
         }
+        foreach ($arr as $element) {
+            $helperArray[$element]++;
+        }
+        for ($i = $minElement+1; $i <= $maxElement; $i++) {
+            $helperArray[$i] += $helperArray[$i-1];
+        }
         return $arr;
     }
 }
