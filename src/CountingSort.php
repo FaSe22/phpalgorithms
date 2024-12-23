@@ -25,8 +25,8 @@ class CountingSort
         foreach ($arr as $element) {
             $helperArray[$element]++;
         }
-        for ($i = $minElement+1; $i <= $maxElement; $i++) {
-            $helperArray[$i] += $helperArray[$i-1];
+        for ($i = $minElement + 1; $i <= $maxElement; $i++) {
+            $helperArray[$i] += $helperArray[$i - 1];
         }
         return $arr;
     }
