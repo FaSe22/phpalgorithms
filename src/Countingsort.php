@@ -19,7 +19,7 @@ class Countingsort
         $minElement = ArrayHelper::getMin($arr);
         $maxElement = ArrayHelper::getMax($arr);
         $helperArray = [];
-        for($i = $minElement; $i <= $maxElement; $i++){
+        for ($i = $minElement; $i <= $maxElement; $i++) {
             $helperArray[$i] = 0;
         }
         return $arr;
