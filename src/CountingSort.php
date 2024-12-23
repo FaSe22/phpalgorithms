@@ -30,7 +30,7 @@ class CountingSort
         }
         $resultArray = [];
         for ($i = 0; $i < $length; $i++) {
-            $resultArray[$helperArray[$arr[$i]]] = $arr[$i];
+            $resultArray[$helperArray[$arr[$i]]-1] = $arr[$i];
             $helperArray[$arr[$i]]--;
         }
         return $resultArray;
