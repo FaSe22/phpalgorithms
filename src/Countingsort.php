@@ -13,7 +13,7 @@ class Countingsort
     public static function sort(array $arr): array
     {
         $length = count($arr);
-        if ($length == 0) {
+        if ($length <= 1) {
             return $arr;
         }
         $minElement = ArrayHelper::getMin($arr);
