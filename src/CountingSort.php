@@ -4,7 +4,7 @@ namespace Src;
 
 use Src\helper\ArrayHelper;
 
-class Countingsort
+class CountingSort
 {
     /**
      * @param array<int> $arr
