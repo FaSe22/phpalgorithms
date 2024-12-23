@@ -28,6 +28,11 @@ class CountingSort
         for ($i = $minElement + 1; $i <= $maxElement; $i++) {
             $helperArray[$i] += $helperArray[$i - 1];
         }
-        return $arr;
+        $resultArray = [];
+        for ($i = 0; $i < $length; $i++) {
+            $resultArray[$helperArray[$arr[$i]]] = $arr[$i];
+            $helperArray[$arr[$i]]--;
+        }
+        return $resultArray;
     }
 }
