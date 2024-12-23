@@ -25,4 +25,15 @@ class ArrayHelper
     {
         return max($array);
     }
+
+    /**
+     * Checks the array for non int values and return false if any occur
+     *
+     * @param array<int, mixed> $array
+     * @return bool
+     */
+    public static function consistsOfInt(array $array): bool
+    {
+        return count($array) == count(array_filter($array, 'is_int'));
+    }
 }
