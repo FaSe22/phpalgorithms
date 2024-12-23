@@ -16,7 +16,8 @@ class BinaryTree
             return [];
         }
         $tree = new Tree($arr[0]);
-        for ($i = 1; $i < count($arr); $i++) {
+        $length = count($arr);
+        for ($i = 1; $i < $length; $i++) {
             $tree->put($arr[$i]);
         }
 

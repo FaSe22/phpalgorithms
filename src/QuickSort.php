@@ -16,7 +16,8 @@ class QuickSort
         $pivot = $arr[0];
         $right = [];
         $left = [];
-        for ($i = 1; $i < count($arr); $i++) {
+        $length = count($arr);
+        for ($i = 1; $i < $length; $i++) {
             if ($arr[$i] < $pivot) {
                 $right[] = $arr[$i];
             } else {
