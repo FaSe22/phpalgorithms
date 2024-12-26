@@ -4,6 +4,8 @@ namespace Src;
 
 class BucketSort
 {
+    private static string $sortingAlgorithm = "Src\\Gnomesort";
+
     /**
      * @param array<int, int|float> $arr
      * @return array<int, int|float>
@@ -21,6 +23,13 @@ class BucketSort
             $index = (($element - $min) / $range) * ($bucketSize - 1);
             $buckets[(int)$index][] = $element;
         }
-        return $arr;
+        for ($i = 0; $i<$bucketSize; $i++) {
+            $buckets[$i] = self::$sortingAlgorithm::sort($buckets[$i]);
+        }
+        $result = [];
+        for($i = 0; $i<$bucketSize; $i++) {
+            $result = array_merge($result, $buckets[$i]);
+        }
+        return $result;
     }
 }
