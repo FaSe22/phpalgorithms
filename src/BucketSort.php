@@ -11,9 +11,7 @@ class BucketSort
     public static function sort(array $arr): array
     {
         $length = count($arr);
-        $min = min($arr);
-        $max = max($arr);
-        if ($min == $max) {
+        if ($length == 0 || $min= min($arr) == $max = max($arr)) {
             return $arr;
         }
         $range = $max - $min;
