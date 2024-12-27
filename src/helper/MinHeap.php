@@ -12,7 +12,19 @@ class MinHeap
      * @param int|float $value
      * @return void
      */
-    public function insert(int|float $value): void {}
+    public function insert(int|float $value): void
+    {
+        $length = count($this->heap);
+        $this->heap[$length] = $value;
+        if ($length == 0) {
+            return;
+        }
+        $index = $length;
+        while ($index > 0 && $this->heap[(int)(($index - 1) / 2)] < $value) {
+            [$this->heap[(int)(($index - 1) / 2)], $this->heap[$index]] = [$this->heap[$index], $this->heap[(int)(($index - 1) / 2)]];
+            $index = (int)(($index - 1) / 2);
+        }
+    }
 
     /**
      * Delete the provided value from the heap
