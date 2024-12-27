@@ -31,4 +31,11 @@ class MinHeap
     {
         return $this->heap[0] ?? null;
     }
+
+    /**
+     * Heapify the array
+     *
+     * @return void
+     */
+    private function heapify(): void {}
 }
