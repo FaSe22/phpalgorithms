@@ -27,7 +27,8 @@ class MinHeap
      *
      * @return int|float|null The peak value, or null if not applicable.
      */
-    public function peak(): int|float|null {
+    public function peak(): int|float|null
+    {
         return $this->heap[0] ?? null;
     }
 }
