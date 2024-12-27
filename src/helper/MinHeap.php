@@ -7,6 +7,15 @@ class MinHeap
     private array $heap;
 
     /**
+     * @param array<int, int|float> $data to be inserted into the heap
+     */
+    public function __construct(array $data) {
+        foreach ($data as $item) {
+            $this->insert($item);
+        }
+    }
+
+    /**
      * Insert the provided into the heap
      *
      * @param int|float $value
