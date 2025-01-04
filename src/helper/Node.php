@@ -88,11 +88,11 @@ class Node
     {
         $left = [];
         $right = [];
-        if ($this->left() != null) {
-            $left = $this->left()->flatten();
+        if ($this->left != null) {
+            $left = $this->left->flatten();
         }
-        if ($this->right() != null) {
-            $right = $this->right()->flatten();
+        if ($this->right != null) {
+            $right = $this->right->flatten();
         }
 
         return array_merge($left, [$this->value], $right);
