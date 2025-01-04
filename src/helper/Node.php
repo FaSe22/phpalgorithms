@@ -7,9 +7,13 @@ class Node
     private Node|null $parent;
     private Node|null $right;
     private Node|null $left;
-    private Int $value;
+    private float|int $value;
 
-    public function __construct($value, Node $node = null)
+    /**
+     * @param float|int $value
+     * @param Node|null $node
+     */
+    public function __construct(float|int $value, Node $node = null)
     {
         $this->parent = $node;
         $this->value = $value;
@@ -17,34 +21,58 @@ class Node
         $this->right = null;
     }
 
+    /**
+     * @return Node|null the parent of the node
+     */
     public function parent(): Node|null
     {
         return $this->parent;
     }
 
-    public function value(): Int
+    /**
+     * @return float|int
+     */
+    public function value(): float|int
     {
         return $this->value;
     }
 
+    /**
+     * @return Node|null the left child
+     */
     public function left(): Node|null
     {
         return $this->left;
     }
 
+    /**
+     * @return Node|null the right child
+     */
     public function right(): Node|null
     {
         return $this->right;
     }
 
-    public function setLeft($value): Node
+    /**
+     * set the left child as as a new Node with provided value
+     *
+     * @param float|int $value
+     * @return Node
+     */
+    public function setLeft(float|int $value): Node
     {
         $newNode = new Node($value, $this);
 
         return $this->left = $newNode;
     }
 
-    public function setRight($value): Node
+    /**
+     * set the right child as as a new Node with provided value
+     *
+     * @param float|int $value
+     * @return Node
+     */
+    public function setRight(float|int $value): Node
     {
         $newNode = new Node($value, $this);
 
@@ -52,6 +80,8 @@ class Node
     }
 
     /**
+     * travel the tree from the current node and return array representation
+     *
      * @return array<int, float>
      */
     public function flatten(): array
@@ -61,7 +91,7 @@ class Node
         if ($this->left() != null) {
             $left = $this->left()->flatten();
         }
-        if ($this->right != null) {
+        if ($this->right() != null) {
             $right = $this->right()->flatten();
         }
 

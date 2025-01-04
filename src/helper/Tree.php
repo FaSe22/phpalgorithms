@@ -6,17 +6,28 @@ class Tree
 {
     private ?Node $root;
 
-    public function __construct($value)
+    /**
+     * @param float|int $value
+     */
+    public function __construct(float|int $value)
     {
         $this->root = new Node($value);
     }
 
-    public function root(): Node
+    /**
+     * @return Node|null
+     */
+    public function root(): ?Node
     {
         return $this->root;
     }
 
-    public function put($value, Node $node = null): void
+    /**
+     * @param float|int $value
+     * @param Node|null $node
+     * @return void
+     */
+    public function put(float|int $value, Node $node = null): void
     {
         if ($node == null) {
             $this->put($value, $this->root);
