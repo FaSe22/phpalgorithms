@@ -48,4 +48,25 @@ class Tree
             }
         }
     }
+
+    /**
+     * search for node with provided value and remove it from tree
+     *
+     * @param float|int $value to search and remove
+     * @return float|int|null the value found or null on not existing
+     */
+    public function pull(float|int $value): float|int|null
+    {
+        $pointer = $this->root;
+        do {
+            if ($pointer->value() < $value) {
+                $pointer = $pointer->right();
+            } elseif ($value < $pointer->value() ) {
+                $pointer = $pointer->left();
+            }
+        } while ($pointer && $pointer->value() != $value);
+        if (!$pointer) {
+            return null;
+        }
+    }
 }
