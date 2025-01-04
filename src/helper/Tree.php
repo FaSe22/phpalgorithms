@@ -61,7 +61,7 @@ class Tree
         while ($pointer && $pointer->value() != $value) {
             if ($pointer->value() < $value) {
                 $pointer = $pointer->right();
-            } elseif ($value < $pointer->value() ) {
+            } elseif ($value < $pointer->value()) {
                 $pointer = $pointer->left();
             }
         }
