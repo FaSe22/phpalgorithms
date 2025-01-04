@@ -58,13 +58,13 @@ class Tree
     public function pull(float|int $value): float|int|null
     {
         $pointer = $this->root;
-        do {
+        while ($pointer && $pointer->value() != $value) {
             if ($pointer->value() < $value) {
                 $pointer = $pointer->right();
             } elseif ($value < $pointer->value() ) {
                 $pointer = $pointer->left();
             }
-        } while ($pointer && $pointer->value() != $value);
+        }
         if (!$pointer) {
             return null;
         }
