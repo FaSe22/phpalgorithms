@@ -82,5 +82,30 @@ class Tree
             }
             return $value;
         }
+        if(!$pointer->right()) {
+            $pointer->left()->setParent($pointer->parent());
+            if ($pointer->parent()->left() === $pointer) {
+                $pointer->parent()->setLeft($pointer->left());
+            } else {
+                $pointer->parent()->setRight($pointer->left());
+            }
+            return $value;
+        }
+
+
+
+
+
+
+        if ($pointer->parent()->left() === $pointer) {
+            $pointer->parent()->setLeft($inorderSuccessor);
+        } else {
+            $pointer->parent()->setRight($inorderSuccessor);
+        }        $pointer->left()->setParent($pointer->parent());
+        if ($pointer->parent()->left() === $pointer) {
+            $pointer = $pointer->parent()->setLeft($pointer->left());
+        } else {
+            $pointer = $pointer->parent()->setRight($pointer->left());
+        }
     }
 }
