@@ -74,12 +74,13 @@ class Tree
             $this->root = null;
             return $value;
         }
-        if(!$pointer->left() && !$pointer->right()) {
+        if (!$pointer->left() && !$pointer->right()) {
             if ($pointer->parent()->left() === $pointer) {
                 $pointer->parent()->setLeft(null);
             } else {
                 $pointer->parent()->setRight(null);
             }
+            return $value;
         }
     }
 }
