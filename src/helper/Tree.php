@@ -91,5 +91,23 @@ class Tree
             }
             return $value;
         }
+        $inorderSuccessor = $pointer->right();
+        while ($inorderSuccessor->left()) {
+            $inorderSuccessor = $inorderSuccessor->left();
+        }
+        if ($inorderSuccessor->parent()->left() === $inorderSuccessor) {
+            $inorderSuccessor->parent()->setLeft($inorderSuccessor->right());
+        } else {
+            $inorderSuccessor->parent()->setRight($inorderSuccessor->right());
+        }
+        if ($pointer->parent()->left() === $pointer) {
+            $pointer->parent()->setLeft($inorderSuccessor);
+        } else {
+            $pointer->parent()->setRight($inorderSuccessor);
+        }
+        $inorderSuccessor->setRight($pointer->right());
+        $inorderSuccessor->setLeft($pointer->left());
+        $pointer->left()->setParent($inorderSuccessor);
+        return $value;
     }
 }
