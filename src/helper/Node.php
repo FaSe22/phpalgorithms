@@ -56,10 +56,10 @@ class Node
     /**
      * set the left child to provided Node
      *
-     * @param Node $node
+     * @param ?Node $node
      * @return Node
      */
-    public function setLeft(Node $node): Node
+    public function setLeft(?Node $node): Node
     {
         return $this->left = $node;
     }
@@ -67,10 +67,10 @@ class Node
     /**
      * set the right child to provided Node
      *
-     * @param Node $node
+     * @param ?Node $node
      * @return Node
      */
-    public function setRight(Node $node): Node
+    public function setRight(?Node $node): Node
     {
         return $this->right = $node;
     }
