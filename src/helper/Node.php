@@ -54,6 +54,17 @@ class Node
     }
 
     /**
+     * set the parent to provided Node
+     *
+     * @param ?Node $node
+     * @return Node
+     */
+    public function setParent(?Node $node): Node
+    {
+        return $this->parent = $node;
+    }
+
+    /**
      * set the left child to provided Node
      *
      * @param ?Node $node
