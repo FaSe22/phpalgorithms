@@ -70,5 +70,9 @@ class Tree
         if (!$pointer) {
             return null;
         }
+        if (!$pointer->parent()) {
+            $this->root = null;
+            return $value;
+        }
     }
 }
