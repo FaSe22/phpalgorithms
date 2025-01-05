@@ -70,15 +70,5 @@ class Tree
         if (!$pointer) {
             return null;
         }
-        $replacement = $pointer->left() ?? $pointer->right();
-        if ($pointer->parent()) {
-            if ($pointer->parent()->left() === $pointer) {
-                $pointer = $pointer->parent()->setLeft($replacement);
-            } else {
-                $pointer = $pointer->parent()->setRight($replacement);
-            }
-        } else {
-            $this->root = $replacement;
-        }
     }
 }
