@@ -54,29 +54,25 @@ class Node
     }
 
     /**
-     * set the left child as as a new Node with provided value
+     * set the left child to provided Node
      *
-     * @param float|int $value
+     * @param Node $node
      * @return Node
      */
-    public function setLeft(float|int $value): Node
+    public function setLeft(Node $node): Node
     {
-        $newNode = new Node($value, $this);
-
-        return $this->left = $newNode;
+        return $this->left = $node;
     }
 
     /**
-     * set the right child as as a new Node with provided value
+     * set the right child to provided Node
      *
-     * @param float|int $value
+     * @param Node $node
      * @return Node
      */
-    public function setRight(float|int $value): Node
+    public function setRight(Node $node): Node
     {
-        $newNode = new Node($value, $this);
-
-        return $this->right = $newNode;
+        return $this->right = $node;
     }
 
     /**

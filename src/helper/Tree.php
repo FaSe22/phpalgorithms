@@ -36,13 +36,15 @@ class Tree
         }
         if ($node->value() < $value) {
             if ($node->right() == null) {
-                $node->setRight($value);
+                $newNode = new Node($value, $node);
+                $node->setRight($newNode);
             } else {
                 $this->put($value, $node->right());
             }
         } else {
             if ($node->left() == null) {
-                $node->setLeft($value);
+                $newNode = new Node($value, $node);
+                $node->setLeft($newNode);
             } else {
                 $this->put($value, $node->left());
             }
