@@ -6,9 +6,19 @@ class MergeSort
 {
     /**
      * @param array<int, float> $arr
+     * @param String $method name of the methode to use for sorting
      * @return array<int, float>
      */
-    public static function sort(array $arr): array
+    public static function sort(array $arr, String $method = "variant1"): array
+    {
+        return self::$method($arr);
+    }
+
+    /**
+     * @param array<int, float> $arr
+     * @return array<int, float>
+     */
+    public static function variant1(array $arr): array
     {
         if (count($arr) <= 1) {
             return $arr;
