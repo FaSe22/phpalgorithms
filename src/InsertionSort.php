@@ -20,8 +20,9 @@ class InsertionSort
      */
     private static function variant1(array $arr): array
     {
+        $length = count($arr);
         // iterate over all elements
-        for ($i = 1; $i < count($arr); $i++) {
+        for ($i = 1; $i < $length; $i++) {
             // safe current element of iteration
             $element = $arr[$i];
             // loop over already passed array
@@ -46,12 +47,13 @@ class InsertionSort
      */
     private static function variant2(array $arr): array
     {
+        $length = count($arr);
         // start from the first array and iterate over all
-        for ($i = 0; $i < count($arr); $i++) {
+        for ($i = 0; $i < $length; $i++) {
             // assume the first element is the smallest
             $index = $i;
             // loop over the rest of the array
-            for ($j = $i; $j < count($arr); $j++) {
+            for ($j = $i; $j < $length; $j++) {
                 // check if the current element is smaller
                 if ($arr[$j] < $arr[$index]) {
                     // replace the saved index

@@ -21,11 +21,12 @@ class Bubblesort
      */
     private static function variant1(array $arr): array
     {
+        $length = count($arr);
         /**
          *
          * @var int[] $arr
          */
-        for ($j = count($arr) - 1; $j > 0; $j--) {
+        for ($j = $length - 1; $j > 0; $j--) {
             for ($i = 0; $i < $j; $i++) {
                 if ($arr[$i] > $arr[$i + 1]) {
                     [$arr[$i],  $arr[$i + 1]] = [$arr[$i + 1], $arr[$i]];
@@ -42,8 +43,9 @@ class Bubblesort
      */
     private static function variant2($arr): array
     {
-        for ($i = 0; $i < count($arr); $i++) {
-            for ($j = 0; $j < count($arr); $j++) {
+        $length = count($arr);
+        for ($i = 0; $i < $length; $i++) {
+            for ($j = 0; $j < $length; $j++) {
                 if ($arr[$i] < $arr[$j]) {
                     $tmp = $arr[$i];
                     $arr[$i] = $arr[$j];
@@ -61,8 +63,9 @@ class Bubblesort
      */
     private static function variant3($arr): array
     {
-        for ($i = 0; $i < count($arr); $i++) {
-            for ($j = $i; $j < count($arr); $j++) {
+        $length = count($arr);
+        for ($i = 0; $i < $length; $i++) {
+            for ($j = $i; $j < $length; $j++) {
                 if ($arr[$i] > $arr[$j]) {
                     $tmp = $arr[$i];
                     $arr[$i] = $arr[$j];
@@ -80,9 +83,10 @@ class Bubblesort
      */
     private static function variant4($arr): array
     {
+        $length = count($arr);
         do {
             $check = false;
-            for ($i = 0; $i < count($arr) - 1; $i++) {
+            for ($i = 0; $i < $length - 1; $i++) {
                 if ($arr[$i] > $arr[$i + 1]) {
                     $tmp = $arr[$i];
                     $arr[$i] = $arr[$i + 1];
@@ -101,9 +105,10 @@ class Bubblesort
      */
     private static function variant5($arr): array
     {
+        $length = count($arr);
         do {
             $check = false;
-            for ($i = 0; $i < count($arr) - 1; $i++) {
+            for ($i = 0; $i < $length - 1; $i++) {
                 if ($arr[$i] > $arr[$i + 1]) {
                     [$arr[$i],  $arr[$i + 1]] = [$arr[$i + 1], $arr[$i]];
                     $check = true;

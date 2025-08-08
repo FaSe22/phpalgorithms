@@ -10,10 +10,11 @@ class MergeSort
      */
     public static function sort(array $arr): array
     {
-        if (count($arr) <= 1) {
+        $length = count($arr);
+        if ($length <= 1) {
             return $arr;
         }
-        $middle = (int)(count($arr) / 2);
+        $middle = (int)($length / 2);
         $left = array_splice($arr, 0, $middle);
         $left = self::sort($left);
         $right = self::sort($arr);
@@ -31,7 +32,9 @@ class MergeSort
         $i = 0;
         $j = 0;
         $result = [];
-        while ($i < count($left) && $j < count($right)) {
+        $lengthLeft = count($left);
+        $lengthRight = count($right);
+        while ($i < $lengthLeft && $j < $lengthRight) {
             if ($left[$i] < $right[$j]) {
                 $result[] = $left[$i];
                 $i++;
@@ -40,10 +43,10 @@ class MergeSort
                 $j++;
             }
         }
-        for (; $i < count($left); $i++) {
+        for (; $i < $lengthLeft; $i++) {
             $result[] = $left[$i];
         }
-        for (; $j < count($right); $j++) {
+        for (; $j < $lengthRight; $j++) {
             $result[] = $right[$j];
         }
 
