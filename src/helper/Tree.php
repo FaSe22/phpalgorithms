@@ -6,17 +6,28 @@ class Tree
 {
     private ?Node $root;
 
-    public function __construct($value)
+    /**
+     * @param float|int $value
+     */
+    public function __construct(float|int $value)
     {
         $this->root = new Node($value);
     }
 
-    public function root(): Node
+    /**
+     * @return Node|null
+     */
+    public function root(): ?Node
     {
         return $this->root;
     }
 
-    public function put($value, Node $node = null): void
+    /**
+     * @param float|int $value
+     * @param Node|null $node
+     * @return void
+     */
+    public function put(float|int $value, Node $node = null): void
     {
         if ($node == null) {
             $this->put($value, $this->root);
@@ -25,16 +36,78 @@ class Tree
         }
         if ($node->value() < $value) {
             if ($node->right() == null) {
-                $node->setRight($value);
+                $newNode = new Node($value, $node);
+                $node->setRight($newNode);
             } else {
                 $this->put($value, $node->right());
             }
         } else {
             if ($node->left() == null) {
-                $node->setLeft($value);
+                $newNode = new Node($value, $node);
+                $node->setLeft($newNode);
             } else {
                 $this->put($value, $node->left());
             }
         }
+    }
+
+    /**
+     * search for node with provided value and remove it from tree
+     *
+     * @param float|int $value to search and remove
+     * @return float|int|null the value found or null on not existing
+     */
+    public function pull(float|int $value): float|int|null
+    {
+        $pointer = $this->root;
+        while ($pointer && $pointer->value() != $value) {
+            if ($pointer->value() < $value) {
+                $pointer = $pointer->right();
+            } elseif ($value < $pointer->value()) {
+                $pointer = $pointer->left();
+            }
+        }
+        if (!$pointer) {
+            return null;
+        }
+        if (!$pointer->parent()) {
+            $this->root = null;
+            return $value;
+        }
+        if (!$pointer->left() && !$pointer->right()) {
+            if ($pointer->parent()->left() === $pointer) {
+                $pointer->parent()->setLeft(null);
+            } else {
+                $pointer->parent()->setRight(null);
+            }
+            return $value;
+        }
+        if(!$pointer->right()) {
+            $pointer->left()->setParent($pointer->parent());
+            if ($pointer->parent()->left() === $pointer) {
+                $pointer->parent()->setLeft($pointer->left());
+            } else {
+                $pointer->parent()->setRight($pointer->left());
+            }
+            return $value;
+        }
+        $inorderSuccessor = $pointer->right();
+        while ($inorderSuccessor->left()) {
+            $inorderSuccessor = $inorderSuccessor->left();
+        }
+        if ($inorderSuccessor->parent()->left() === $inorderSuccessor) {
+            $inorderSuccessor->parent()->setLeft($inorderSuccessor->right());
+        } else {
+            $inorderSuccessor->parent()->setRight($inorderSuccessor->right());
+        }
+        if ($pointer->parent()->left() === $pointer) {
+            $pointer->parent()->setLeft($inorderSuccessor);
+        } else {
+            $pointer->parent()->setRight($inorderSuccessor);
+        }
+        $inorderSuccessor->setRight($pointer->right());
+        $inorderSuccessor->setLeft($pointer->left());
+        $pointer->left()->setParent($inorderSuccessor);
+        return $value;
     }
 }
